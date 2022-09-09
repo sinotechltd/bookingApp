@@ -80,7 +80,7 @@ function logout(){
     }
     function userbookings(){
         $bookings = ['LogggedUserBookings'=> Master_booking::where('user_id','=',session('LoggedUser'))->first()];
-        if(!$bookings){
+        if($bookings < 0){
             return back()->with('fail','No entries yet');
         }else{
             
