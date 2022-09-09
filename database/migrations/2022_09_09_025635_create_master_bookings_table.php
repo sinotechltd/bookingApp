@@ -18,10 +18,12 @@ return new class extends Migration
             $table->string('items_booked');
             $table->date('date_booked');            
             $table->string('program_title')->nullable();
+            $table->string('program_topic')->nullable();
+            $table->string('producer')->nullable();
             $table->string('location')->nullable();
             $table->time('recording_time')->nullable();
-            $table->string('setting_time')->nullable();
-            $table->string('rehearsal_time')->nullable();
+            $table->time('setting_time')->nullable();
+            $table->time('rehearsal_time')->nullable();
             $table->string('designer')->nullable();
             $table->string('guests')->nullable();            
             $table->string('presenters')->nullable();

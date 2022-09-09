@@ -17,7 +17,6 @@ class MainController extends Controller
     }
     function save(Request $request){
         //return $request->input();
-
         $request ->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',            
@@ -25,7 +24,6 @@ class MainController extends Controller
             'password' => 'required|min:5 max:12'
 
         ]);
-
         //insert data into users table
          $user = new User;
          $user->name = $request->name;
@@ -73,12 +71,11 @@ function logout(){
         return redirect('/auth/login');
     }
 }
-
-    function homepage(){
+function homepage(){
         $activeUser = ['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))->first()];
         return view('navbar',compact('activeUser'));                   
     }
-    function userbookings(){
+function userbookings(){
         $bookings = ['LogggedUserBookings'=> Master_booking::where('user_id','=',session('LoggedUser'))->first()];
         if($bookings < 0){
             return back()->with('fail','No entries yet');
@@ -86,6 +83,54 @@ function logout(){
             
             return view('homepage',compact('bookings'));
         } 
+    }
+    //booking. insert into mastertable
+function book(Request $request){
+        //return $request->input();    
+        
+        $session_id = session('LoggedUser');
+        $request ->validate([
+            'ptitle' => 'required',
+            'program_topic' => 'required',            
+            'producer' => 'required',
+            'bookingdate' => 'required',
+            'settingtime' => 'required',
+            'rehearsal_time' => 'required',
+            'location' => 'required',
+            'designer' => 'required',
+            'guests' => 'required',
+            'equiments' => 'required',
+            'presenters' => 'required',
+            'remarks' => 'required',
+            'operation_crew' => 'required',
+            'recordingtime' => 'required',
+
+        ]);
+        $book = new Master_booking();
+        $book->program_title = $request->ptitle;
+        $book->program_topic = $request->program_topic;
+        $book->producer = $request->producer;
+        $book->date_booked = $request->bookingdate;
+        $book->recording_time = $request->recordingtime;
+        $book->setting_time = $request->settingtime;
+        $book->rehearsal_time = $request->rehearsal_time;
+        $book->location = $request->location;
+        $book->designer = $request->designer;
+        $book->guests = $request->guests;
+        $book->items_booked = $request->equiments;
+        $book->presenters = $request->presenters;
+        $book->remarks = $request->remarks;
+        $book->operation_crew = $request->operation_crew;
+        $book->user_id = $session_id;
+        $ubook = $book->save();
+
+        if($ubook){
+           return back()->with('Success','New user added successfully');
+
+        }else {
+           return back()->with('Failed', 'something went wrong, try again');
+        }
+
     }
 
 }
