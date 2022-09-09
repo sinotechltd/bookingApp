@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Master_booking;
 use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
@@ -56,22 +57,7 @@ class MainController extends Controller
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser',$userInfo->id);
                 return redirect('homepage');
-                // if($userInfo->role = "Admin"){
-                    
-                // }
-                // else  if($userInfo->role = "Approver1"){
-                //     return redirect('admin/dashboard1');
-                // }
-                // else  if($userInfo->role = "Approver2"){
-                //     return redirect('admin/dashboard2');
-                // }
-                // else  if($userInfo->role = "Approver3"){
-                //     return redirect('admin/dashboard3');
-                // }
-                // else{
-                //     return redirect('userpanel');
-                // }
-
+                
             }
             else{
                 return back()->with('fail','Incorrect password,try again');
@@ -80,5 +66,27 @@ class MainController extends Controller
         }
         
     }
+//logout function
+function logout(){
+    if(session()->has('LoggedUser')){
+        session()->pull('LoggedUser');
+        return redirect('/auth/login');
+    }
+}
+
+    function homepage(){
+        $activeUser = ['LoggedUserInfo'=>User::where('id','=',session('LoggedUser'))->first()];
+        return view('navbar',compact('activeUser'));                   
+    }
+    function userbookings(){
+        $bookings = ['LogggedUserBookings'=> Master_booking::where('user_id','=',session('LoggedUser'))->first()];
+        if(!$bookings){
+            return back()->with('fail','No entries yet');
+        }else{
+            
+            return view('homepage',compact('bookings'));
+        } 
+    }
 
 }
+ 
