@@ -1,10 +1,11 @@
     <!-- pop up booking form Modal -->
-    <div class="modal fade" id="approve" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="addbtn" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-xl" style="width:1250px;">
             <div class="modal-content">
-                <form>
+                <form action="{{ route('crud.bookform.save')}}" method="POST">
+                    @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">Awaiting Approval</h5>
+                        <h5 class="modal-title" id="exampleModalLabel" style="text-align: center;">OB PRODUCTION BOOKING FORM</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
@@ -150,13 +151,11 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-danger">Reject</button>
-                        <button type="button" class="btn btn-success">Approve</button>
-                    </div>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>   
+                        <button type="submit" class="btn btn-primary">Submit</button>                     
+                    </div>                    
+                </form>
             </div>
-            </form>
         </div>
-    </div>
     </div>
     </div>

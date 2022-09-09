@@ -18,11 +18,16 @@ use App\Http\Controllers\MainController;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
-Route::get('/auth/register', [MainController::class, 'register'])->name('auth.login');
-Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
-
-Route::get('/homepage', [MainController::class, 'userbookings'])->name('homepage');
 Route::post('/auth/save', [MainController::class, 'save'])->name('auth.save');
+Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 Route::post('/auth/check', [MainController::class, 'check'])->name('auth.check');
-Route::get('/navbar', [MainController::class, 'homepage'])->name('navbar');
+Route::post('/crud/bookform/save', [MainController::class, 'book'])->name('crud.bookform.save');
+
+Route::group(['middleware' => ['AutCheck']], function () {
+    Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');   
+    Route::get('/auth/register', [MainController::class, 'register'])->name('auth.login');
+    Route::get('/navbar', [MainController::class, 'homepage'])->name('navbar');
+   
+    Route::get('/homepage', [MainController::class, 'userbookings'])->name('homepage');
+    // Route::resource('/crud/bookform','BookingController');
+});
