@@ -21,7 +21,8 @@ class MainController extends Controller
             'name' => 'required',
             'email' => 'required|email|unique:users',            
             'role' => 'required',
-            'password' => 'required|min:5 max:12'
+            'rtoken' => 'required',
+            'password' => 'required|min:5'
 
         ]);
         //insert data into users table
@@ -29,6 +30,7 @@ class MainController extends Controller
          $user->name = $request->name;
          $user->email = $request->email;
          $user->role = $request->role;
+         $user->remember_token = $request->rtoken;
          $user->password = Hash::make($request->password);
          $save = $user->save();
 
@@ -76,15 +78,14 @@ function homepage(){
         return view('navbar',compact('activeUser'));                   
     }
 function userbookings(){
-        $bookings = ['LogggedUserBookings'=> Master_booking::where('user_id','=',session('LoggedUser'))->first()];
-        if($bookings < 0){
-            return back()->with('fail','No entries yet');
-        }else{
-            
-            return view('homepage',compact('bookings'));
-        } 
+        // $bookings = ['LogggedUserBookings'=> Master_booking::where('user_id','=',session('LoggedUser'))->get()];
+        // if(!$bookings){
+        //     return back()->with('fail','No entries yet');
+        // }else{            
+        //     return view('homepage', 'LogggedUserBookings');
+        // } 
     }
-    //booking. insert into mastertable
+    
 function book(Request $request){
         //return $request->input();    
         
