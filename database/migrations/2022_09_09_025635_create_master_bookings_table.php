@@ -30,16 +30,19 @@ return new class extends Migration
             $table->string('remarks')->nullable();
             $table->string('operation_crew')->nullable();
             $table->string('shift_leader')->nullable();
-            $table->string('approval_level1')->nullable();
+            $table->string('approval_level1')->nullable()->default("Pending");
             $table->string('approver1_id')->nullable();
             $table->date('approval1_time')->nullable();
-            $table->string('approval_level2')->nullable();
+            $table->string('approval_level2')->nullable()->default("Pending");
             $table->string('approver2_id')->nullable();
             $table->date('approval2_time')->nullable(); 
-            $table->string('approval_level3')->nullable();
+            $table->string('approval_level3')->nullable()->default("Pending");
             $table->string('approver3_id')->nullable();
             $table->date('approval3_time')->nullable();  
-            $table->foreignId('user_id');          
+            $table->foreignId('user_id');
+            $table->date('updated_at');
+            $table->date('created_at');      
+
         });
     }
 

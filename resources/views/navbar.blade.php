@@ -16,7 +16,7 @@
         </ul>
        
         <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->
-        <a href="{{ route('auth.logout') }}">Logout</a>
+        <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
       </div>
     </div>
   </nav>

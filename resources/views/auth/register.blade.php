@@ -34,6 +34,11 @@
                         <span class="text-danger"> @error('role'){{ $message }} @enderror</span>
                     </div>
                     <div class="form-group mt-3">
+                        <label>Remember Token</label>
+                        <input type="txt" name="rtoken" class="form-control mt-1" placeholder="Password reset hint"/>
+                        <span class="text-danger"> @error('rtoken'){{ $message }} @enderror</span>
+                    </div>
+                    <div class="form-group mt-3">
                         <label>Password</label>
                         <input type="password" name="password" class="form-control mt-1" placeholder="Enter password" />
                         <span class="text-danger"> @error('password'){{ $message }} @enderror</span>

@@ -2,7 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-
+use App\Http\Controllers\Bookingcrud;
+use App\Http\Livewire\BookingComponent;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,9 +16,9 @@ use App\Http\Controllers\MainController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 Route::post('/auth/save', [MainController::class, 'save'])->name('auth.save');
 Route::get('/auth/logout', [MainController::class, 'logout'])->name('auth.logout');
 Route::post('/auth/check', [MainController::class, 'check'])->name('auth.check');
@@ -26,8 +27,12 @@ Route::post('/crud/bookform/save', [MainController::class, 'book'])->name('crud.
 Route::group(['middleware' => ['AutCheck']], function () {
     Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');   
     Route::get('/auth/register', [MainController::class, 'register'])->name('auth.login');
-    Route::get('/navbar', [MainController::class, 'homepage'])->name('navbar');
+    //Route::get('/navbar', [MainController::class, 'homepage'])->name('navbar');   
+     
+   // Route::post('/addrecord',[Bookingcrud::class, 'addrecord']);
+    //New routes with livewire
+    Route::get('book', BookingComponent::class);
+    Route::get('/homepage', BookingComponent::class);
+    Route::get('/',BookingComponent::class); 
    
-    Route::get('/homepage', [MainController::class, 'userbookings'])->name('homepage');
-    // Route::resource('/crud/bookform','BookingController');
 });
