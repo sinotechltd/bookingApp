@@ -1,14 +1,18 @@
-<div class="container-fluid">
-    <div class="col justify-content-between">
-        <h4>Production Equipments Booking</h4>
-        <hr>
-    </div>
+<div class="container-fluid p-1">
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Production Facility</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/editing">Editing Facility</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
+        </li>
+    </ul>
     <div class="row">
         <nav class="navbar navbar-light bg-light">
-            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookingmodel"
-                data-backdrop="static"> + Add </button>
-            <a href="#">Approved</a>
-            <a href="#">Rejected</a>
+            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookingmodel" data-backdrop="static"> + Add </button>
             <div class="row">
                 <div class="container-fluid">
                     <form class="d-flex">
@@ -19,6 +23,7 @@
             </div>
         </nav>
     </div>
+    
     <div class="row">
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -48,8 +53,8 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($userBoking->count() > 0)
-                    @foreach ($userBoking as $booking)
+                @if ($userBooking->count() > 0)
+                    @foreach ($userBooking as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
                             <td>{{ $booking->program_title }}</td>
@@ -98,12 +103,7 @@
                                 <div class="mb-3">
                                     <label for="" class="form-label">Program title</label>
                                     <input type="text" name="ptitle" class="form-control ptitle" wire:model='ptitle'
-                                        value="{{ old('ptitle') }}">
-                                    <!-- <select class="form-select" name="ptitle">
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                    </select> -->
+                                        value="{{ old('ptitle') }}">                                    
                                     <div class="form-text">Select your program</div>
                                     <div class="form-text" style="color:red">
                                         @error('ptitle')
@@ -152,17 +152,12 @@
                                     <select class="form-select producer" name="producer"
                                         aria-label="Default select example" wire:model='producer'
                                         value="{{ old('producer') }}">
-                                        <option value="0">first</option>
+                                        <option value="1">first</option>
                                         <option value="1">1</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
                                     </select>
-                                    <div class="form-text">Select your producer</div>
-                                    <div class="form-text" style="color:red">
-                                        @error('producer')
-                                            {{ $message }}
-                                        @enderror
-                                    </div>
+                                    <div class="form-text">Select your producer</div>                                
                                 </div>
                             </div>
                             <div class="col">
@@ -224,7 +219,7 @@
                                     <label class="form-label">Rehearsal Time</label>
                                     <input type="time" name="rehearsal_time" class="form-control rehearsal_time"
                                         wire:model='rehearsal_time' value="{{ old('rehearsal_time') }}">
-                                    <div class="form-text">Select your producer</div>
+                                    <div class="form-text">Select rehearsal time</div>
                                     <div class="form-text" style="color:red">
                                         @error('rehearsal_time')
                                             {{ $message }}

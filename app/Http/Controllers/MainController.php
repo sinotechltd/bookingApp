@@ -56,7 +56,7 @@ class MainController extends Controller
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser',$userInfo->id);
-                return redirect('homepage');
+                return redirect('/');
                 
             }
             else{
