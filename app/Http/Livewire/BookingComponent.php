@@ -95,7 +95,6 @@ class BookingComponent extends Component
         $this->remarks = $booking->remarks;
         $this->operation_crew = $booking->operation_crew;
         $this->shift_leader = $booking->team_leader;
-
         $this->dispatchBrowserEvent('show-edit-modal');
     }
     public function editBookingData()

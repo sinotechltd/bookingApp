@@ -12,10 +12,9 @@
     {{-- Bootstrap Styles --}}
     @livewireStyles
 </head>
-
-<body>
-    @include('navbar')
-        {{ $slot }}  
+<body> 
+    @include('clientNavbar')   
+    {{ $slot }}  
    
     {{-- Bootstrap Scrips --}}
     <script src="{{ asset('imports/bootstrap/js/bootstrap.min.js') }}"></script>

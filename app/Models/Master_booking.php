@@ -9,5 +9,8 @@ class Master_booking extends Model
 {
     use HasFactory;
     protected $table = 'master_bookings';   
+    public function user() {
+        return $this->belongsTo(User::class);
+     }
     
 }
