@@ -6,5 +6,6 @@
         <img src="{{ asset('imgs/logo.jpg') }}" height="70px" width="70px" />
         <img src="{{ asset('imgs/logo.jpg') }}" height="70px" width="70px" />
     </div>
-    <br>    
+    <br>
+
 </div>

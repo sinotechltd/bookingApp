@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
-use App\Http\Controllers\Bookingcrud;
+use App\Http\Livewire\AdminConsole;
 use App\Http\Livewire\BookingComponent;
+use App\Http\Livewire\ClientBookingPage;
 use App\Http\Livewire\ClientEditingFacility;
 use App\Http\Livewire\ClientEquipments;
-use App\Http\Livewire\ClientHomepage;
 use App\Http\Livewire\HONApproval;
+use App\Http\Livewire\HONApproved;
+use App\Http\Livewire\HONRejected;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,12 +34,19 @@ Route::group(['middleware' => ['AutCheck']], function () {
     //auth routes
     Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');   
     Route::get('/auth/register', [MainController::class, 'register'])->name('auth.login');    
-    //New routes with livewire       
+    //New routes with livewire    
     
-    Route::get('/',ClientHomepage::class); 
+    Route::get('/',ClientBookingPage::class); 
     Route::get('/editing', ClientEditingFacility::class);
     Route::get('/equipments', ClientEquipments::class);
-    Route::get('hon', HONApproval::class);
-    Route::get('/studio', HONApproval::class);
    
+    Route::get('book', BookingComponent::class);
+    Route::get('/studio', HONApproval::class);
+   //Admin routes
+   Route::get('/admin',AdminConsole::class);
+   //HONroutes
+   Route::get('hon', HONApproval::class);
+   Route::get('approved', HONApproved::class);
+   Route::get('rejected', HONRejected::class);
+
 });

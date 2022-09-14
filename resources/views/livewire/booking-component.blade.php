@@ -132,6 +132,7 @@
                                         name="team_leader" wire:model='team_leader'
                                         value="{{ old('team_leader') }}">
                                         <option value="John">John</option>
+                                        <option value="John">Kevin</option>
                                         <option value="Mark">Mark</option>
                                         <option value="Yvonne">Yvonne</option>
                                     </select>
@@ -152,7 +153,7 @@
                                     <select class="form-select producer" name="producer"
                                         aria-label="Default select example" wire:model='producer'
                                         value="{{ old('producer') }}">
-                                        <option value="0">first</option>
+                                        <option value="John">John</option>
                                         <option value="1">1</option>
                                         <option value="2">Two</option>
                                         <option value="3">Three</option>
