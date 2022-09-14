@@ -1,11 +1,13 @@
 <?php
+
 namespace App\Http\Livewire;
 
 use Livewire\Component;
+
 use App\Models\Master_booking;
 use DateTime;
 
-class ClientHomepage extends Component
+class ClientBookingPage extends Component
 {
     public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $equiments, $presenters, $remarks, $booking_id_edit;
 
@@ -77,6 +79,7 @@ class ClientHomepage extends Component
     public function render()
     {
         $userBooking = Master_booking::where('user_id', '=', session('LoggedUser'))->get();
-        return view('livewire.client-homepage',['userBooking' => $userBooking])->layout('livewire.layouts.client');
+        return view('livewire.client-booking-page',['userBooking' => $userBooking])->layout('livewire.layouts.client');        
+       
     }
 }

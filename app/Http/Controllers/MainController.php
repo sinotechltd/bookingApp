@@ -56,7 +56,25 @@ class MainController extends Controller
         }else{
             if(Hash::check($request->password, $userInfo->password)){
                 $request->session()->put('LoggedUser',$userInfo->id);
-                return redirect('/');
+                
+                //check user level and redirect
+                if($userInfo->role === 'Admin'){
+                    return redirect('/admin');
+                }
+                else if($userInfo->role === 'HON'){
+                    return redirect('/hon');
+                }
+                else if($userInfo->role === 'TPM'){
+                    return redirect('/tpm');
+                }
+                else if($userInfo->role === 'CSTO'){
+                    return redirect('/csto');
+                }
+                else{
+                    return redirect('/');
+                }
+            
+                
                 
             }
             else{

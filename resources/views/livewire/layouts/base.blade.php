@@ -13,8 +13,8 @@
     @livewireStyles
 </head>
 
-<body>
-    @include('navbar')
+<body>   
+    @include('clientNavbar')
         {{ $slot }}  
    
     {{-- Bootstrap Scrips --}}
@@ -22,6 +22,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"
         integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
     {{-- Bootstrap Scrips --}}
+    @include('footer')
 
     @stack('scripts')
     @livewireScripts

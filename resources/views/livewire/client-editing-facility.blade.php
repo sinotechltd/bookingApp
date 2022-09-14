@@ -1,15 +1,26 @@
-<div class="container-fluid">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="/">Production Facility</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/editing">Editing Facility</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
-        </li>
-    </ul>
+<div class="container-fluid" >
+    <div class="div">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">                
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Production Facility</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/editing">Editing Facility</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
+                        </li>
+                    </ul>
+                    <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->                    
+                </div>
+                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+            </div>
+        </nav>       
+    </div>
+
     <div class="row">
         @if (session()->has('message'))
             <div class="alert alert-success">
@@ -17,7 +28,7 @@
             </div>
         @endif
     </div>
-    <div class="timetable">
+    <div class="container-fluid"">
         <br>
         <table class="table">
             <thead>
@@ -55,8 +66,10 @@
                 </tr>
             </thead>
             <tbody>
-                <td colspan="100"> <h3>Morning</h3></td> 
-                <tr>                                       
+                <td colspan="100">
+                    <h3 style="color: brown">Morning</h3>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -65,8 +78,10 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                 </tr>
-                <td colspan="100"> <h5>Final Cat B</h5></td>
-                <tr>                    
+                <td colspan="100">
+                    <h5>Final Cat B</h5>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -75,8 +90,10 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                 </tr>
-                <td colspan="100"> <h5>Final Cat C</h5></td>
-                <tr>                    
+                <td colspan="100">
+                    <h5>Final Cat C</h5>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -84,11 +101,13 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
-                </tr>                
+                </tr>
             </tbody>
             <tbody>
-                <td colspan="100"> <h3>Evening</h3></td> 
-                <tr>                                       
+                <td colspan="100">
+                    <h3 style="color: brown">Evening</h3>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -97,8 +116,10 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                 </tr>
-                <td colspan="100"> <h5>Final Cat B</h5></td>
-                <tr>                    
+                <td colspan="100">
+                    <h5>Final Cat B</h5>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -107,8 +128,10 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                 </tr>
-                <td colspan="100"> <h5>Final Cat C</h5></td>
-                <tr>                    
+                <td colspan="100">
+                    <h5>Final Cat C</h5>
+                </td>
+                <tr>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td> <button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
@@ -116,7 +139,7 @@
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
                     <td><button class='btn btn-success'>Available</button></td>
-                </tr>                
+                </tr>
             </tbody>
         </table>
     </div>

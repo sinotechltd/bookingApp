@@ -13,8 +13,7 @@
           <li class="nav-item">
             <a class="nav-link" href="/studio">Approve</a>
           </li>
-        </ul>
-       
+        </ul>       
         <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->
         <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
       </div>

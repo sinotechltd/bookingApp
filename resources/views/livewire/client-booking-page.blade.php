@@ -1,15 +1,25 @@
-<div class="container-fluid p-1">
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="/">Production Facility</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/editing">Editing Facility</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
-        </li>
-    </ul>
+<div class="container-fluid">
+    <div class="div">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid">                
+                <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="/">Production Facility</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/editing">Editing Facility</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
+                        </li>
+                    </ul>
+                    <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->                    
+                </div>
+                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+            </div>
+        </nav>       
+    </div>   
     <div class="row">
         <nav class="navbar navbar-light bg-light">
             <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#bookingmodel" data-backdrop="static"> + Add </button>
@@ -32,6 +42,7 @@
         @endif
     </div>
     {{-- Table with user boookings --}}
+    <div class="container-fluid">
     <div class="row">
         <table class="table table-hover">
             <thead>
@@ -72,21 +83,23 @@
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#deleteentry">Delete</button>
-                                    <button type="button" class="btn btn-sm btn-primary" wire:click='editbookingentry({{ $booking->booking_id }} )'>Edit</button>
+                                    <button type="button" class="btn btn-sm btn-primary" wire:click='({{ $booking->booking_id }} )'>Edit</button>
                                 </div>
                             </td>
                         </tr>
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="10" style="text-align: center"><small>No entries yet</small></td>
+                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
                         </td>
                     </tr>
                 @endif
             </tbody>
         </table>
     </div>
+    </div>
     {{-- Book modal --}}
+    <div class="container-flud">
     <div wire:ignore.self class="modal fade" id="bookingmodel" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl" style="width:1250px;">
             <div class="modal-content">
@@ -131,6 +144,9 @@
                                     <select class="form-select team_leader" aria-label="Default select example"
                                         name="team_leader" wire:model='team_leader'
                                         value="{{ old('team_leader') }}">
+                                        <option value="Collins">Collins</option>
+                                        <option value="Joanne">Joan</option>
+                                        <option value="Makua">Makau</option>
                                         <option value="John">John</option>
                                         <option value="Mark">Mark</option>
                                         <option value="Yvonne">Yvonne</option>
@@ -152,12 +168,17 @@
                                     <select class="form-select producer" name="producer"
                                         aria-label="Default select example" wire:model='producer'
                                         value="{{ old('producer') }}">
-                                        <option value="1">first</option>
-                                        <option value="1">1</option>
-                                        <option value="2">Two</option>
+                                        <option value="Collins">Collins</option>
+                                        <option value="Joanne">Joan</option>
+                                        <option value="Makua">Makau</option>
                                         <option value="3">Three</option>
                                     </select>
-                                    <div class="form-text">Select your producer</div>                                
+                                    <div class="form-text">Select your producer</div>
+                                    <div class="form-text" style="color:red">
+                                        @error('producer')
+                                            {{ $message }}
+                                        @enderror
+                                    </div>
                                 </div>
                             </div>
                             <div class="col">
@@ -326,6 +347,7 @@
             </div>
         </div>
     </div>
+</div>
     {{-- Book modal --}}
     {{-- Edit Entry Modal --}}
     <div wire:ignore.self class="modal fade" id="editbookingModal" tabindex="-1" aria-hidden="true">
@@ -582,3 +604,4 @@
         });
     </script>
 @endpush
+
