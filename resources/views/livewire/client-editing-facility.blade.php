@@ -13,8 +13,7 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/equipments" @disabled(true)>Equipments</a>
                         </li>
-                    </ul>
-                    <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->                    
+                    </ul>                                     
                 </div>
                 <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
             </div>

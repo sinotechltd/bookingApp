@@ -83,7 +83,7 @@
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                         data-bs-target="#deleteentry">Delete</button>
-                                    <button type="button" class="btn btn-sm btn-primary" wire:click='({{ $booking->booking_id }} )'>Edit</button>
+                                    <button type="button" class="btn btn-sm btn-primary">Edit</button>
                                 </div>
                             </td>
                         </tr>

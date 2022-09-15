@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="nav nav-tabs">                       
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page">Approval</a>
                         </li>
@@ -13,7 +13,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link" @disabled(true)>Admin Action</a>
                         </li> --}}
-                    </ul>                    
+                    </ul>
                 </div>
                 <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
             </div>
@@ -21,13 +21,13 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="hon">Pending Approval</a>
+            <a class="nav-link" aria-current="page" href="ctopage">Pending Approval</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/approved">Approved</a>
+            <a class="nav-link active" href="/ctoapproved">Approved</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/rejected">Rejected</a>
+            <a class="nav-link" href="/ctorejected">Rejected</a>
         </li>
     </ul>
     <div class="row">
@@ -43,8 +43,8 @@
                     <th scope="col">Guests</th>
                     <th scope="col">Team Leader</th>
                     <th scope="col">Remarks</th>
-                    <th scope="col">Date</th>                   
-                    <th scope="col">Aproval date</th>                   
+                    <th scope="col">Date</th>
+                    <th scope="col">Aproval date</th>
                     <th scope="col">Modify</th>
 
                 </tr>
@@ -63,11 +63,11 @@
                             <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
-                            <td>{{ $booking->approval1_time }}</td>
+                            <td>{{ $booking->approval2_time }}</td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewData"'>View</button>
+                                        data-bs-target="#viewData">View</button>
                                 </div>
                             </td>
                         </tr>

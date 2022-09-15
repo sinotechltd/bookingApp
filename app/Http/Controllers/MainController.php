@@ -151,6 +151,122 @@ function book(Request $request){
         }
 
     }
+    public function aproveline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level1 ='Approved';
+        $bookingline->approver1_id = $userId; 
+        $bookingline->approval1_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        return redirect()->back();
+    
+    }
+    public function rejectline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level1 ='Rejected';
+        $bookingline->approver1_id = $userId; 
+        $bookingline->approval1_time = now();
+        $bookingline->save();    
+       
+        if($bookingline){
+            return back()->with('Success','Record Rejected');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
 
+    
+    }
+    //tpm approval and reject actions
+    public function tpmaproveline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level1 ='Approved';
+        $bookingline->approver1_id = $userId; 
+        $bookingline->approval1_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        return redirect()->back();
+    
+    }
+    public function tpmrejectline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level1 ='Rejected';
+        $bookingline->approver1_id = $userId; 
+        $bookingline->approval1_time = now();
+        $bookingline->save();    
+       
+        if($bookingline){
+            return back()->with('Success','Record Rejected');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+
+    
+    }
+    
+    public function cstoaproveline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level3 ='Approved';
+        $bookingline->approver3_id = $userId; 
+        $bookingline->approval3_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        return redirect()->back();
+    
+    }
+    public function cstorejectline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level3 ='Rejected';
+        $bookingline->approver3_id = $userId; 
+        $bookingline->approval3_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        return redirect()->back();
+    
+    }
 }
+
  

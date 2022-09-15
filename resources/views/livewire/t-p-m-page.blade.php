@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-                    <ul class="nav nav-tabs">                       
+                    <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" aria-current="page">Approval</a>
                         </li>
@@ -13,7 +13,7 @@
                         {{-- <li class="nav-item">
                             <a class="nav-link" @disabled(true)>Admin Action</a>
                         </li> --}}
-                    </ul>                    
+                    </ul>
                 </div>
                 <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
             </div>
@@ -21,16 +21,27 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="hon">Pending Approval</a>
+            <a class="nav-link active" aria-current="page" href="ctopage">Pending Approval</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/approved">Approved</a>
+            <a class="nav-link" href="/tpmapproved">Approved</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/rejected">Rejected</a>
+            <a class="nav-link" href="/tpmrejected">Rejected</a>
         </li>
     </ul>
     <div class="row">
+        @if (Session::get('Success'))
+        <div class="alert alert-success">
+            {{ Session::get('Success') }}
+        </div>
+    @endif
+    @if (Session::get('Failed'))
+        <div class="alert alert-danger">
+            {{ Session::get('Failed') }}
+        </div>
+    @endif
+
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -43,15 +54,15 @@
                     <th scope="col">Guests</th>
                     <th scope="col">Team Leader</th>
                     <th scope="col">Remarks</th>
-                    <th scope="col">Date</th>                   
-                    <th scope="col">Aproval date</th>                   
+                    <th scope="col">Date</th>
+                    <th scope="col">Approval</th>
                     <th scope="col">Modify</th>
 
                 </tr>
             </thead>
             <tbody>
-                @if ($userApproval->count() > 0)
-                    @foreach ($userApproval as $booking)
+                @if ($userBoking->count() > 0)
+                    @foreach ($userBoking as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
                             <td>{{ $booking->user_id }}</td>
@@ -63,18 +74,20 @@
                             <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
-                            <td>{{ $booking->approval1_time }}</td>
+                            <td>{{ $booking->approval_level2 }}</td>
                             <td>
-                                <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewData"'>View</button>
-                                </div>
+                                <a class="btn-group" role="group" href="{{ url('/tpmapproveline',$booking->id)}}">
+                                    <button type="button" class="btn btn-sm btn-primary">Approve</button>
+                                </a>
+                                <a class="btn-group" role="group"  href="{{ url('/tpmrejectline',$booking->id)}}">
+                                    <button type="button" class="btn btn-sm btn-danger">Reject</button>
+                                </a>
                             </td>
                         </tr>
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
+                        <td colspan="10" style="text-align: center"><small>No entries yet</small></td>
                         </td>
                     </tr>
                 @endif
