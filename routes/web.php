@@ -55,6 +55,9 @@ Route::group(['middleware' => ['AutCheck']], function () {
    Route::get('rejected', HONRejected::class);
    Route::get('/approveline/{id}',[MainController::class, 'aproveline']);
    Route::get('/rejectline/{id}',[MainController::class, 'rejectline']);
+   //eding facilities booking
+   Route::get('/fapproveline/{id}',[MainController::class, 'faproveline']);
+   Route::get('/frejectline/{id}',[MainController::class, 'frejectline']);
    //TPM routes
    Route::get('tpmpage', TPMPage::class);
    Route::get('tpm', TPMPage::class);
@@ -62,6 +65,9 @@ Route::group(['middleware' => ['AutCheck']], function () {
    Route::get('tmprejected', TPMPApproval::class);
    Route::get('/tpmapproveline/{id}',[MainController::class, 'tpmaproveline']);
    Route::get('/tpmrejectline/{id}',[MainController::class, 'tpmrejectline']);
+   //eding facilities booking
+   Route::get('/ftpmapproveline/{id}',[MainController::class, 'ftpmaproveline']);
+   Route::get('/ftpmrejectline/{id}',[MainController::class, 'ftpmrejectline']);
   // CSTO routes
   Route::get('csto', CSTOPage::class);
   Route::get('ctopage', CSTOPage::class);
@@ -69,6 +75,9 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('ctorejected', CSTOPRejected::class);
   Route::get('/cstoapproveline/{id}',[MainController::class, 'cstoaproveline']);
   Route::get('/ctorejectline/{id}',[MainController::class, 'cstorejectline']);
+  //eding facilities booking
+  Route::get('/fcstoapproveline/{id}',[MainController::class, 'fcstoaproveline']);
+  Route::get('/fctorejectline/{id}',[MainController::class, 'fcstorejectline']);
   
 
 });

@@ -21,16 +21,16 @@
     </div>
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="ctopage">Pending Approval</a>
+            <a class="nav-link" aria-current="page" href="tpm">Pending Approval</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link active" href="/ctoapproved">Approved</a>
+            <a class="nav-link active" href="/tpmapproved">Approved</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="/ctorejected">Rejected</a>
+            <a class="nav-link" href="/tpmrejected">Rejected</a>
         </li>
     </ul>
-    <div class="row">
+    <div class="row">        
         <table class="table table-hover">
             <thead>
                 <tr>

@@ -32,15 +32,15 @@
     </ul>
     <div class="row">
         @if (Session::get('Success'))
-        <div class="alert alert-success">
-            {{ Session::get('Success') }}
-        </div>
-    @endif
-    @if (Session::get('Failed'))
-        <div class="alert alert-danger">
-            {{ Session::get('Failed') }}
-        </div>
-    @endif
+            <div class="alert alert-success">
+                {{ Session::get('Success') }}
+            </div>
+        @endif
+        @if (Session::get('Failed'))
+            <div class="alert alert-danger">
+                {{ Session::get('Failed') }}
+            </div>
+        @endif
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -73,12 +73,20 @@
                             <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
-                            <td>{{ $booking->approval_level1 }}</td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/approveline',$booking->id)}}">
+                                @if ($booking->approval_level1 == 'Pending')
+                                    <span class="badge bg-secondary">Awaiting your approval</span>
+                                @elseif ($booking->approval_level1 == 'Approved')
+                                    <span class="badge bg-success">Approved</span>
+                                @elseif($booking->approval_level1 == 'Rejected')
+                                    <span class="badge bg-danger">Rejected</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn-group" role="group" href="{{ url('/approveline', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group"  href="{{ url('/rejectline',$booking->id)}}">
+                                <a class="btn-group" role="group" href="{{ url('/rejectline', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
@@ -86,7 +94,70 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="10" style="text-align: center"><small>No entries yet</small></td>
+                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
+                        </td>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
+        {{-- editing facility bookings --}}
+        <div class="conta">
+            <h5>
+                Editing Facilities awaiting approval
+            </h5>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Ref</th>
+                    <th scope="col">Suit</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Program Title</th>
+                    <th scope="col">Requirements</th>
+                    <th scope="col">Editing Date</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">HON Approval</th>
+                    <th scope="col">Modify</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @if ($userBooking->count() > 0)
+                    @foreach ($userBooking as $fbooking)
+                        <tr>
+                            <td>{{ $fbooking->id }}</td>
+                            <td>{{ $fbooking->suitID }}</td>
+                            <td>{{ $fbooking->user_id }}</td>
+                            <td>{{ $fbooking->program_title }}</td>
+                            <td>{{ $fbooking->requirements }}</td>
+                            <td>{{ $fbooking->editing_date }}</td>
+                            <td>{{ $fbooking->start_time }}</td>
+                            <td>{{ $fbooking->endtime_time }}</td>
+                            <td>{{ $fbooking->remarks }}</td>
+                            <td>
+                                @if ($fbooking->approval_level1 == 'Pending')
+                                    <span class="badge bg-secondary">Awaiting your approval</span>
+                                @elseif ($fbooking->approval_level1 == 'Approved')
+                                    <span class="badge bg-success">Approved</span>
+                                @elseif($fbooking->approval_level1 == 'Rejected')
+                                    <span class="badge bg-danger">Rejected</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn-group" role="group" href="{{ url('/fapproveline', $fbooking->id) }}">
+                                    <button type="button" class="btn btn-sm btn-primary">Approve</button>
+                                </a>
+                                <a class="btn-group" role="group" href="{{ url('/frejectline', $fbooking->id) }}">
+                                    <button type="button" class="btn btn-sm btn-danger">Reject</button>
+                                </a>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
                         </td>
                     </tr>
                 @endif

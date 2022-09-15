@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\EditingFac;
 use Livewire\Component;
 use App\Models\Master_booking;
 use App\Models\User;
@@ -13,7 +14,8 @@ class HONApproval extends Component
     public function render()
     {
         $userBoking = Master_booking::where('approval_level1', '=', 'Pending')->get();
-        return view('livewire.h-o-n-approval', ['userBoking' => $userBoking])->layout('livewire.layouts.base');
+        $userBookings = EditingFac::where('approval_level1', '=', 'Pending')->get();
+        return view('livewire.h-o-n-approval', ['userBoking' => $userBoking],['userBooking' => $userBookings])->layout('livewire.layouts.base');
     }
     public function resetInput()
     {

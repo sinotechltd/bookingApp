@@ -9,7 +9,7 @@ class CSTOPRejected extends Component
 {
     public function render()
     {
-        $userBoking = Master_booking::where('approval_level3', '=', 'Approved')->get();
-        return view('livewire.c-s-t-o-p-rejected', ['userBoking' => $userBoking])->layout('livewire.layouts.base');        
+        $userApprovalSuccess= Master_booking::where('approver3_id', '=', session('LoggedUser'))->where('approval_level3', '=', 'Rejected')->get();
+        return view('livewire.c-s-t-o-p-rejected',['userApproval' => $userApprovalSuccess])->layout('livewire.layouts.client');        
     }
 }

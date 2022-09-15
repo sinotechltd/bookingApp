@@ -76,9 +76,33 @@
                             <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
-                            <td>{{ $booking->approval_level1 }}</td>
-                            <td>{{ $booking->approval_level2 }}</td>
-                            <td>{{ $booking->approval_level3 }}</td>
+                            <td>
+                              @if ($booking->approval_level1 == "Pending")
+                              <span class="badge bg-secondary">Pending</span>                              
+                              @elseif ($booking->approval_level1 == "Approved")
+                              <span class="badge bg-success">Approved</span>                              
+                              @elseif($booking->approval_level1 == "Rejected")
+                              <span class="badge bg-danger">Rejected</span>
+                              @endif
+                            </td>
+                            <td>
+                                @if ($booking->approval_level2 == "Pending")
+                              <span class="badge bg-secondary">Pending</span>                              
+                              @elseif ($booking->approval_level2 == "Approved")
+                              <span class="badge bg-success">Approved</span>                              
+                              @elseif($booking->approval_level2 == "Rejected")
+                              <span class="badge bg-danger">Rejected</span>
+                              @endif 
+                            </td>
+                            <td>
+                                @if ($booking->approval_level3 == "Pending")
+                                <span class="badge bg-secondary">Pending</span>                              
+                                @elseif ($booking->approval_level3 == "Approved")
+                                <span class="badge bg-success">Approved</span>                              
+                                @elseif($booking->approval_level3 == "Rejected")
+                                <span class="badge bg-danger">Rejected</span>
+                                @endif
+                            </td>
                             <td>
                                 <div class="btn-group" role="group">
                                     <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
@@ -115,8 +139,13 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Program title</label>
-                                    <input type="text" name="ptitle" class="form-control ptitle" wire:model='ptitle'
-                                        value="{{ old('ptitle') }}">                                    
+                                    <select class="form-select" name="ptitle" class="form-control ptitle" wire:model='ptitle'
+                                    value="{{ old('ptitle') }}">
+                                    <option >--Select Program--</option>
+                                    @foreach ($programs as $program)
+                                    <option value="{{ $program->id }}">{{ $program->program_name }}</option>                                        
+                                    @endforeach   
+                                    </select>
                                     <div class="form-text">Select your program</div>
                                     <div class="form-text" style="color:red">
                                         @error('ptitle')
@@ -141,15 +170,12 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Team/Shift Leader</label>
-                                    <select class="form-select team_leader" aria-label="Default select example"
+                                    <select class="form-select" aria-label="Default select example"
                                         name="team_leader" wire:model='team_leader'
                                         value="{{ old('team_leader') }}">
-                                        <option value="Collins">Collins</option>
-                                        <option value="Joanne">Joan</option>
-                                        <option value="Makua">Makau</option>
-                                        <option value="John">John</option>
-                                        <option value="Mark">Mark</option>
-                                        <option value="Yvonne">Yvonne</option>
+                                        @foreach ($employes as $employe)
+                                        <option value="{{ $employe->id }}">{{ $employe->full_name }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="form-text">Select your Team leader</div>
                                     <div class="form-text" style="color:red">
