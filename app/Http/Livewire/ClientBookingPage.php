@@ -2,34 +2,20 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\EmployeeTable;
+use App\Models\Inventory;
 use Livewire\Component;
 
 use App\Models\Master_booking;
+use App\Models\ProgramsTable;
 use DateTime;
 
 class ClientBookingPage extends Component
 {
     public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $equiments, $presenters, $remarks, $booking_id_edit;
+    public $selected = '';
 
-    public function updated($fields)
-    {
-        $this->validateOnly($fields, [
-            'ptitle' => 'required',
-            'program_topic' => 'required',
-            'team_leader' => 'required',
-            'producer' => 'required',
-            'operation_crew' => 'required',
-            'bookingdate' => 'required',
-            'recordingtime' => 'required',
-            'settingtime' => 'required',
-            'rehearsal_time' => 'required',
-            'location' => 'required',
-            'designer' => 'required',
-            'guests' => 'required',
-            'equiments' => 'required',
-            'presenters' => 'required',
-        ]);
-    }
+
     public function submibookingdetails()
     {
         $session_id = session('LoggedUser');
@@ -78,8 +64,15 @@ class ClientBookingPage extends Component
     }
     public function render()
     {
+
+        $getProgramTitle = ProgramsTable::all();
         $userBooking = Master_booking::where('user_id', '=', session('LoggedUser'))->get();
-        return view('livewire.client-booking-page',['userBooking' => $userBooking])->layout('livewire.layouts.client');        
+        $employes = EmployeeTable::all();
+        $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
+        $getPresenters =EmployeeTable::where('duties', '=','Presenters')->get();
+        $getequipments = Inventory::all();
+
+        return view('livewire.client-booking-page', ['userBooking' => $userBooking],compact('getProgramTitle','employes','getproducer','getequipments','getPresenters'))->layout('livewire.layouts.client');
        
     }
 }

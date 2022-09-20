@@ -7,9 +7,15 @@ use App\Http\Livewire\BookingComponent;
 use App\Http\Livewire\ClientBookingPage;
 use App\Http\Livewire\ClientEditingFacility;
 use App\Http\Livewire\ClientEquipments;
+use App\Http\Livewire\CSTOPage;
+use App\Http\Livewire\CSTOPApproved;
+use App\Http\Livewire\CSTOPRejected;
 use App\Http\Livewire\HONApproval;
 use App\Http\Livewire\HONApproved;
 use App\Http\Livewire\HONRejected;
+use App\Http\Livewire\TimeTable;
+use App\Http\Livewire\TPMPage;
+use App\Http\Livewire\TPMPApproval;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,5 +54,32 @@ Route::group(['middleware' => ['AutCheck']], function () {
    Route::get('hon', HONApproval::class);
    Route::get('approved', HONApproved::class);
    Route::get('rejected', HONRejected::class);
+   Route::get('/approveline/{id}',[MainController::class, 'aproveline']);
+   Route::get('/rejectline/{id}',[MainController::class, 'rejectline']);
+   //eding facilities booking
+   Route::get('/fapproveline/{id}',[MainController::class, 'faproveline']);
+   Route::get('/frejectline/{id}',[MainController::class, 'frejectline']);
+   //TPM routes
+   Route::get('tpmpage', TPMPage::class);
+   Route::get('tpm', TPMPage::class);
+   Route::get('tpmapproved', TPMPApproval::class);
+   Route::get('tmprejected', TPMPApproval::class);
+   Route::get('/tpmapproveline/{id}',[MainController::class, 'tpmaproveline']);
+   Route::get('/tpmrejectline/{id}',[MainController::class, 'tpmrejectline']);
+   //eding facilities booking
+   Route::get('/ftpmapproveline/{id}',[MainController::class, 'ftpmaproveline']);
+   Route::get('/ftpmrejectline/{id}',[MainController::class, 'ftpmrejectline']);
+  // CSTO routes
+  Route::get('csto', CSTOPage::class);
+  Route::get('ctopage', CSTOPage::class);
+  Route::get('ctoapproved', CSTOPApproved::class);
+  Route::get('ctorejected', CSTOPRejected::class);
+  Route::get('/cstoapproveline/{id}',[MainController::class, 'cstoaproveline']);
+  Route::get('/ctorejectline/{id}',[MainController::class, 'cstorejectline']);
+  //eding facilities booking
+  Route::get('/fcstoapproveline/{id}',[MainController::class, 'fcstoaproveline']);
+  Route::get('/fctorejectline/{id}',[MainController::class, 'fcstorejectline']);
+  Route::get('/timetable',TimeTable::class);
+  
 
 });
