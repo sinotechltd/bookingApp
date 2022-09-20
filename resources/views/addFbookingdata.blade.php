@@ -5,7 +5,8 @@
                 <form wire:submit.prevent='submibookingdetails'>
                     @csrf
                     <div class="modal-header">
-                        <h5 class="modal-title" id="" style="text-align: center;">EDITING FACILITIES BOOKING FORM
+                        <h5 class="modal-title" id="" style="text-align: center;">EDITING FACILITIES BOOKING
+                            FORM
                         </h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
@@ -45,10 +46,10 @@
                                     <select class="form-select producer" name="producer"
                                         aria-label="Default select example" wire:model='producer'
                                         value="{{ old('producer') }}">
-                                        <option value="Collins">Collins</option>
-                                        <option value="Joanne">Joan</option>
-                                        <option value="Makua">Makau</option>
-                                        <option value="3">Three</option>
+                                        <option>--Select Producer--</option>
+                                        @foreach ($getproducer as $producer)
+                                            <option value="{{ $producer->id }}">{{ $producer->full_name }}</option>
+                                        @endforeach
                                     </select>
                                     <div class="form-text">Select your producer</div>
                                     <div class="form-text" style="color:red">
@@ -62,11 +63,12 @@
                                 <div class="mb-3">
                                     <label class="form-label">Editing Suit</label>
                                     <select class="form-select" name="esuit" class="form-control location"
-                                    wire:model='esuit' value="{{ old('esuit') }}">
-                                        <option value="1">Suit A</option>
-                                        <option value="2">Suit B</option>                                        
-                                        <option value="3">Suit C</option>
-                                    </select>                                    
+                                        wire:model='esuit' value="{{ old('esuit') }}">
+                                        <option>--Select Editing suit--</option>
+                                        @foreach ($geteSuits as $producer)
+                                            <option value="{{ $producer->id }}">{{ $producer->full_name }}</option>
+                                        @endforeach
+                                    </select>
                                     <div class="form-text">Select prefered editing suit</div>
                                     <div class="form-text" style="color:red">
                                         @error('esuit')
@@ -79,7 +81,7 @@
                         <div class="row align-items-start">
                             <div class="col">
                                 <div class="mb-3">
-                                    <label class="form-label">Editing Date</label>                                    
+                                    <label class="form-label">Editing Date</label>
                                     <input type="date" name="editing_date" class="form-control"
                                         wire:model='editing_date' value="{{ old('editing_date') }}">
                                     <div class="form-text">Select Editing</div>
@@ -117,24 +119,25 @@
                                 </div>
                             </div>
                         </div>
-                            <div class="row align-items-start">
-                                <div class="col">
-                                    <div class="mb-3">
-                                        <label class="form-label">Other Requipments</label>
-                                        <select class="form-select equiments" name="equiments" wire:model='equiments'
-                                            value="{{ old('equiments') }}">
-                                            <option value="Camera">Camera</option>
-                                            <option value="Mixer">Mixer</option>
-                                            <option value="microphone">microphone</option>
-                                        </select>
-                                        <div class="form-text">Editor, graphics, mics for sounds etc.</div>
-                                        <div class="form-text" style="color:red">
-                                            @error('equiments')
-                                                {{ $message }}
-                                            @enderror
-                                        </div>
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label">Other Requipments</label>
+                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
+                                        value="{{ old('equiments') }}">
+                                        <option>--Select Editing suit--</option>
+                                        @foreach ($getequipments as $equiments)
+                                            <option value="{{ $equiments->id }}">{{ $equiments->full_name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="form-text">Editor, graphics, mics for sounds etc.</div>
+                                    <div class="form-text" style="color:red">
+                                        @error('equiments')
+                                            {{ $message }}
+                                        @enderror
                                     </div>
-                                </div>                              
+                                </div>
+                            </div>
                             <div class="row align-items-start">
                                 <div class="col">
                                     <div class="mb-3">

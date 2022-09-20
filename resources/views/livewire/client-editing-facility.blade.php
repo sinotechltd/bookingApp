@@ -65,7 +65,7 @@
                         <th scope="col">HON</th>
                         <th scope="col">TPM</th>
                         <th scope="col">CSTO</th>
-                        <th scope="col">Modify</th>
+                        <th scope="col">Comments</th>                       
 
                     </tr>
                 </thead>
@@ -109,12 +109,7 @@
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
                                 </td>
-                                <td>
-                                    <div class="btn-group" role="group">
-                                        <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
-                                            data-bs-target="#deleteentry">Delete</button>
-                                        <button type="button" class="btn btn-sm btn-primary">Edit</button>
-                                    </div>
+                                <td>Comments                                    
                                 </td>
                             </tr>
                         @endforeach

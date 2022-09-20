@@ -13,6 +13,7 @@ use App\Http\Livewire\CSTOPRejected;
 use App\Http\Livewire\HONApproval;
 use App\Http\Livewire\HONApproved;
 use App\Http\Livewire\HONRejected;
+use App\Http\Livewire\TimeTable;
 use App\Http\Livewire\TPMPage;
 use App\Http\Livewire\TPMPApproval;
 
@@ -78,6 +79,7 @@ Route::group(['middleware' => ['AutCheck']], function () {
   //eding facilities booking
   Route::get('/fcstoapproveline/{id}',[MainController::class, 'fcstoaproveline']);
   Route::get('/fctorejectline/{id}',[MainController::class, 'fcstorejectline']);
+  Route::get('/timetable',TimeTable::class);
   
 
 });

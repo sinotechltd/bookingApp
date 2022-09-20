@@ -3,7 +3,9 @@
 namespace App\Http\Livewire;
 
 use App\Models\EditingFac;
-
+use App\Models\EmployeeTable;
+use App\Models\Inventory;
+use App\Models\Suits;
 use Livewire\Component;
 
 class ClientEditingFacility extends Component
@@ -11,8 +13,7 @@ class ClientEditingFacility extends Component
     public $ptitle, $program_topic, $producer, $esuit, $editing_date, $start_time, $end_time, $equiments,  $remarks;
     public function submibookingdetails()
     {
-        $session_id = session('LoggedUser');
-        
+        $session_id = session('LoggedUser');       
 
         $this->validate([
             'ptitle' => 'required',
@@ -40,7 +41,7 @@ class ClientEditingFacility extends Component
         $book-> user_id = $session_id;
         $book->save();
         if($book){
-            return back()->with('Success','New user added successfully');
+            return back()->with('Success','Successfully booked',$this->esuit);
 
          }else {
             return back()->with('Failed', 'something went wrong, try again');
@@ -51,7 +52,10 @@ class ClientEditingFacility extends Component
 
     public function render()
     {
+        $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
         $userBooking = EditingFac::where('user_id', '=', session('LoggedUser'))->get();
-        return view('livewire.client-editing-facility',['userBooking' => $userBooking])->layout('livewire.layouts.client');
+        $getequipments = Inventory::all();
+        $geteSuits = Suits::all();
+        return view('livewire.client-editing-facility',['userBooking' => $userBooking],compact('getproducer','getequipments','geteSuits'))->layout('livewire.layouts.client');
     }
 }

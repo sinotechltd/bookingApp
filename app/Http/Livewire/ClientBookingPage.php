@@ -3,6 +3,7 @@
 namespace App\Http\Livewire;
 
 use App\Models\EmployeeTable;
+use App\Models\Inventory;
 use Livewire\Component;
 
 use App\Models\Master_booking;
@@ -12,6 +13,7 @@ use DateTime;
 class ClientBookingPage extends Component
 {
     public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $equiments, $presenters, $remarks, $booking_id_edit;
+    public $selected = '';
 
 
     public function submibookingdetails()
@@ -62,10 +64,15 @@ class ClientBookingPage extends Component
     }
     public function render()
     {
-      
+
         $getProgramTitle = ProgramsTable::all();
         $userBooking = Master_booking::where('user_id', '=', session('LoggedUser'))->get();
         $employes = EmployeeTable::all();
-        return view('livewire.client-booking-page',['userBooking' => $userBooking],['programs' => $getProgramTitle],['employes' => $employes])->layout('livewire.layouts.client');
+        $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
+        $getPresenters =EmployeeTable::where('duties', '=','Presenters')->get();
+        $getequipments = Inventory::all();
+
+        return view('livewire.client-booking-page', ['userBooking' => $userBooking],compact('getProgramTitle','employes','getproducer','getequipments','getPresenters'))->layout('livewire.layouts.client');
+       
     }
 }
