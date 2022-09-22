@@ -105,7 +105,8 @@
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
                                 </td>
-                                <td> Comments
+                                <td>
+                                {{ $booking->comments}}
                                 </td>
                             </tr>
                         @endforeach

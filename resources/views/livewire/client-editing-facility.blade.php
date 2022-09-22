@@ -108,8 +108,8 @@
                                     @elseif($booking->approval_level3 == 'Rejected')
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
-                                </td>
-                                <td>Comments                                    
+                                </td>{{$booking->comments}}
+                                <td>                                    
                                 </td>
                             </tr>
                         @endforeach

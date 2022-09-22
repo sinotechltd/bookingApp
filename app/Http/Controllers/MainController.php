@@ -46,7 +46,7 @@ class MainController extends Controller
     function check(Request $request){
         $request->validate([
             'email' => 'required|email',
-            'password' => 'required|min:5 max:12'
+            'password' => 'required'
         ]);
         //retrieve from database
         // return $request->input();
@@ -268,6 +268,45 @@ function book(Request $request){
 
     
     }
+    public function ftpmaproveline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= EditingFac::where('id',$id)->first();    
+        $bookingline->approval_level2 ='Approved';
+        $bookingline->approver2_id = $userId; 
+        $bookingline->approval2_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        //return redirect()->back();
+    
+    }
+    public function ftpmrejectline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= EditingFac::where('id',$id)->first();    
+        $bookingline->approval_level2 ='Rejected';
+        $bookingline->approver2_id = $userId; 
+        $bookingline->approval2_time = now();
+        $bookingline->approval_level3 ='Rejected';       
+        $bookingline->save();    
+       
+        if($bookingline){
+            return back()->with('Success','Record Rejected');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+
+    
+    }
     
     public function cstoaproveline(int $id)
     {
@@ -292,6 +331,44 @@ function book(Request $request){
     {
         $userId=session('LoggedUser');
         $bookingline= Master_booking::where('id',$id)->first();    
+        $bookingline->approval_level3 ='Rejected';
+        $bookingline->approver3_id = $userId; 
+        $bookingline->approval3_time = now();
+        $bookingline->save();
+        if($bookingline){
+            return back()->with('Success','Record Approved');
+            return redirect()->back();
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+        return redirect()->back();
+    
+    }
+    public function fcstoaproveline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= EditingFac::where('id',$id)->first();    
+        $bookingline->approval_level3 ='Approved';
+        $bookingline->approver3_id = $userId; 
+        $bookingline->approval3_time = now();
+        $bookingline->save();        
+        if($bookingline){
+            return back()->with('Success','Record Approved');   
+            return redirect()->back();         
+ 
+         }else {
+            return back()->with('Failed', 'something went wrong, try again');
+         }
+    
+       // return redirect()->back();
+    
+    }
+    public function fcstorejectline(int $id)
+    {
+        $userId=session('LoggedUser');
+        $bookingline= EditingFac::where('id',$id)->first();    
         $bookingline->approval_level3 ='Rejected';
         $bookingline->approver3_id = $userId; 
         $bookingline->approval3_time = now();

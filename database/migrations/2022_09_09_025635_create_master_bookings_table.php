@@ -40,6 +40,7 @@ return new class extends Migration
             $table->string('approver3_id')->nullable();
             $table->date('approval3_time')->nullable();  
             $table->foreignId('user_id');
+            $table->string('comments')->nullable();
             $table->date('updated_at');
             $table->date('created_at');      
 

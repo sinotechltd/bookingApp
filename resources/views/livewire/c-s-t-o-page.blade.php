@@ -10,9 +10,12 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Booking</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" @disabled(true)>Admin Action</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assign">Assign</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assign">Assign</a>
+                        </li>
                     </ul>
                 </div>
                 <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
@@ -29,18 +32,19 @@
         <li class="nav-item">
             <a class="nav-link" href="/ctorejected">Rejected</a>
         </li>
+
     </ul>
     <div class="row">
         @if (Session::get('Success'))
-        <div class="alert alert-success">
-            {{ Session::get('Success') }}
-        </div>
-    @endif
-    @if (Session::get('Failed'))
-        <div class="alert alert-danger">
-            {{ Session::get('Failed') }}
-        </div>
-    @endif
+            <div class="alert alert-success">
+                {{ Session::get('Success') }}
+            </div>
+        @endif
+        @if (Session::get('Failed'))
+            <div class="alert alert-danger">
+                {{ Session::get('Failed') }}
+            </div>
+        @endif
 
         <table class="table table-hover">
             <thead>
@@ -76,10 +80,10 @@
                             <td>{{ $booking->date_booked }}</td>
                             <td>{{ $booking->approval_level3 }}</td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/cstoapproveline',$booking->id)}}">
+                                <a class="btn-group" role="group" href="{{ url('/cstoapproveline', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group"  href="{{ url('/ctorejectline',$booking->id)}}">
+                                <a class="btn-group" role="group" href="{{ url('/ctorejectline', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
@@ -87,11 +91,78 @@
                     @endforeach
                 @else
                     <tr>
-                        <td colspan="10" style="text-align: center"><small>No entries yet</small></td>
+                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
                         </td>
                     </tr>
                 @endif
             </tbody>
         </table>
     </div>
+</div>
+
+{{-- editing facility bookings --}}
+<div class="conta">
+    <h5>
+        Editing Facilities awaiting approval
+    </h5>
+</div>
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Ref</th>
+            <th scope="col">Suit</th>
+            <th scope="col">User</th>
+            <th scope="col">Program Title</th>
+            <th scope="col">Requirements</th>
+            <th scope="col">Editing Date</th>
+            <th scope="col">From</th>
+            <th scope="col">To</th>
+            <th scope="col">Remarks</th>
+            <th scope="col">TPM Approval</th>
+            <th scope="col">Modify</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @if ($userBooking->count() > 0)
+            @foreach ($userBooking as $fbooking)
+                <tr>
+                    <td>{{ $fbooking->id }}</td>
+                    <td>{{ $fbooking->suitID }}</td>
+                    <td>{{ $fbooking->user_id }}</td>
+                    <td>{{ $fbooking->program_title }}</td>
+                    <td>{{ $fbooking->requirements }}</td>
+                    <td>{{ $fbooking->editing_date }}</td>
+                    <td>{{ $fbooking->start_time }}</td>
+                    <td>{{ $fbooking->endtime_time }}</td>
+                    <td>{{ $fbooking->remarks }}</td>
+                    <td>
+                        @if ($fbooking->approval_level3 == 'Pending')
+                            <span class="badge bg-secondary">Awaiting your approval</span>
+                        @elseif ($fbooking->approval_level3 == 'Approved')
+                            <span class="badge bg-success">Approved</span>
+                        @elseif($fbooking->approval_level3 == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                        @endif
+                    </td>
+                    <td>
+                        <a class="btn-group" role="group" href="{{ url('/fcstoapproveline', $fbooking->id) }}">
+                            <button type="button" class="btn btn-sm btn-primary">Approve</button>
+                        </a>
+                        <a class="btn-group" role="group">
+                            <button type="button" class="btn btn-sm btn-danger"
+                                wire:click="fctorejectline({{ $fbooking->id }})" data-bs-toggle="modal"
+                                data-bs-target="#rejectReason">Reject</button>
+                        </a>
+                    </td>
+                </tr>
+            @endforeach
+        @else
+            <tr>
+                <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
+                </td>
+            </tr>
+        @endif
+    </tbody>
+</table>
 </div>
