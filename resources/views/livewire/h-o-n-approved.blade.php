@@ -67,6 +67,7 @@
                                     <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#viewProductionData"
                                         wire:click="viewDetails({{ $booking->id }})">View</button>
+                                        {{-- {{ console_log($booking);}} --}}
                                 </div>
                             </td>
                         </tr>

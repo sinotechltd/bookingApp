@@ -149,8 +149,8 @@
                                 <a class="btn-group" role="group" href="{{ url('/fapproveline', $fbooking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group" href="{{ url('/frejectline', $fbooking->id) }}">
-                                    <button type="button" class="btn btn-sm btn-danger">Reject</button>
+                                <a class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-danger" wire:click="rejectReason({{$fbooking->id}})" data-bs-toggle="modal" data-bs-target="#rejectReason">Reject</button>
                                 </a>
                             </td>
                         </tr>
@@ -163,5 +163,38 @@
                 @endif
             </tbody>
         </table>
+    </div>
+</div>
+<div class="container-flud">
+    <div wire:ignore.self class="modal fade" id="rejectReason" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-xl" style="width:1250px;">
+            <div class="modal-content">
+                <form>
+                    @csrf
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="" style="text-align: center;"> Rejection Reason
+                        </h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row align-items-start">
+                            <div class="col">
+                                <div class="mb-3">
+                                    <label class="form-label">Special Remarks</label>
+                                    <textarea name="comments" class="form-control" wire:model='comments' placeholder="Enter your reason"></textarea>
+                                    <div class="form-text">Enter your remarks here</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <a class="btn-group" role="group">
+                            <button type="submit" class="btn btn-sm btn-danger"wire:click="rejectReason" >Reject</button>
+                        </a>
+                    </div>
+                </form>
+            </div>            
+        </div>
     </div>
 </div>

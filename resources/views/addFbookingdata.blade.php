@@ -66,7 +66,7 @@
                                         wire:model='esuit' value="{{ old('esuit') }}">
                                         <option>--Select Editing suit--</option>
                                         @foreach ($geteSuits as $producer)
-                                            <option value="{{ $producer->id }}">{{ $producer->full_name }}</option>
+                                            <option value="{{ $producer->id }}">{{ $producer->suitName }}</option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Select prefered editing suit</div>

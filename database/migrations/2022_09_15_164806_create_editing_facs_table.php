@@ -34,6 +34,7 @@ return new class extends Migration
             $table->string('approval_level3')->nullable()->default("Pending");
             $table->string('approver3_id')->nullable();
             $table->date('approval3_time')->nullable();
+            $table->string('comments')->nullable();
             $table->foreignId('user_id');
             $table->date('updated_at');
             $table->date('created_at');            

@@ -18,7 +18,8 @@
                                         wire:model='ptitle' value="{{ old('ptitle') }}">
                                         <option>--Select Program--</option>
                                         @foreach ($getProgramTitle as $program)
-                                            <option value="{{ $program->program_name }}">{{ $program->program_name }}</option>
+                                            <option value="{{ $program->program_name }}">{{ $program->program_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Select your program</div>
@@ -71,7 +72,8 @@
                                         value="{{ old('producer') }}">
                                         <option>--Select Producer--</option>
                                         @foreach ($getproducer as $producer)
-                                            <option value="{{ $producer->full_name }}">{{ $producer->full_name }}</option>
+                                            <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Select your producer</div>
@@ -201,7 +203,28 @@
                                         @foreach ($getequipments as $equiments)
                                             <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
                                         @endforeach
+                                    </select>                                   
+                                    {{-- <select class="form-select equiments" name="equiments" wire:model='equiments'
+                                        value="{{ old('equiments') }}">
+
+                                        @foreach ($getequipments as $equiments)
+                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
+                                        @endforeach
                                     </select>
+                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
+                                        value="{{ old('equiments') }}">
+
+                                        @foreach ($getequipments as $equiments)
+                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
+                                        @endforeach
+                                    </select>                                    
+                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
+                                        value="{{ old('equiments') }}">
+
+                                        @foreach ($getequipments as $equiments)
+                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
+                                        @endforeach
+                                    </select> --}}
                                     <div class="form-text">Select Equipment to be used</div>
                                     <div class="form-text" style="color:red">
                                         @error('equiments')
@@ -217,7 +240,8 @@
                                         value="{{ old('presenters') }}">
                                         <option>--Select Presenters--</option>
                                         @foreach ($getproducer as $producer)
-                                            <option value="{{ $producer->full_name }}">{{ $producer->full_name }}</option>
+                                            <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Select Your presenter</div>

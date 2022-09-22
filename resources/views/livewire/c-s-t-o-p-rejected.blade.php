@@ -10,9 +10,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="/">Booking</a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" @disabled(true)>Admin Action</a>
-                        </li> --}}
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assign">Assign</a>
+                        </li> 
                     </ul>                    
                 </div>
                 <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>

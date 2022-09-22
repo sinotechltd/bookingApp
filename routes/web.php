@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
 use App\Http\Livewire\AdminConsole;
+use App\Http\Livewire\Assignment;
 use App\Http\Livewire\BookingComponent;
 use App\Http\Livewire\ClientBookingPage;
 use App\Http\Livewire\ClientEditingFacility;
@@ -76,6 +77,7 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('ctorejected', CSTOPRejected::class);
   Route::get('/cstoapproveline/{id}',[MainController::class, 'cstoaproveline']);
   Route::get('/ctorejectline/{id}',[MainController::class, 'cstorejectline']);
+  Route::get('/assign',Assignment::class);
   //eding facilities booking
   Route::get('/fcstoapproveline/{id}',[MainController::class, 'fcstoaproveline']);
   Route::get('/fctorejectline/{id}',[MainController::class, 'fcstorejectline']);
