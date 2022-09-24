@@ -82,6 +82,7 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/fcstoapproveline/{id}',[MainController::class, 'fcstoaproveline']);
   Route::get('/fctorejectline/{id}',[MainController::class, 'fcstorejectline']);
   Route::get('/timetable',TimeTable::class);
-  
+  //timetable routes
+  Route::post('assignmona/{id}',[MainController::class, 'assignEditorMonMoA'])->name('assignmoa');  
 
 });
