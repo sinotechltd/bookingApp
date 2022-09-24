@@ -54,7 +54,8 @@ class ClientEditingFacility extends Component
     public function render()
     {
         $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
-        $userBooking = EditingFac::where('user_id', '=', session('LoggedUser'))
+        $userBooking = EditingFac::select('editing_facs.*','suits.suitName','programs_tables.program_name','employee_tables.full_name')
+        ->where('user_id', '=', session('LoggedUser'))
         ->join('suits','editing_facs.suitID','suits.id')
         ->join('users','editing_facs.user_id','users.id')
         ->join('programs_tables','editing_facs.program_title','programs_tables.id')
