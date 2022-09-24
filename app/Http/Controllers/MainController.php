@@ -199,8 +199,7 @@ function book(Request $request){
         $bookingline->save();
         if($bookingline){
             return back()->with('Success','Record Approved');
-            return redirect()->back();
- 
+            return redirect()->back(); 
          }else {
             return back()->with('Failed', 'something went wrong, try again');
          }

@@ -35,8 +35,17 @@ class HONApproval extends Component
     }
     public function render()
     {
-        $userBoking = Master_booking::where('approval_level1', '=', 'Pending')->get();
-        $userBookings = EditingFac::where('approval_level1', '=', 'Pending')->get();
+        $userBoking = Master_booking::where('approval_level1', '=', 'Pending')
+        // ->join('users','editing_facs.user_id','users.id')
+        // ->join('users','editing_facs.user_id','users.id')
+        ->get();
+        $userBookings = EditingFac::select('editing_facs.*','suits.suitName','users.name','programs_tables.program_name','inventories.equipname')
+        ->where('approval_level1', '=', 'Pending')
+        ->join('suits','editing_facs.suitID','suits.id')
+        ->join('users','editing_facs.user_id','users.id')
+        ->join('programs_tables','editing_facs.program_title','programs_tables.id')
+        ->join('inventories','editing_facs.requirements','inventories.id')
+        ->get();
         return view('livewire.h-o-n-approval', ['userBoking' => $userBoking],['userBooking' => $userBookings])->layout('livewire.layouts.base');
     }
     public function resetInput()

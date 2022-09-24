@@ -30,7 +30,7 @@
             <a class="nav-link" href="/tpmrejected">Rejected</a>
         </li>
     </ul>
-    <div class="row">        
+    <div class="row">
         <table class="table table-hover">
             <thead>
                 <tr>
@@ -80,5 +80,54 @@
                 @endif
             </tbody>
         </table>
+
+        <h5>Editing Facilities Approved entries</h5>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Ref</th>
+                    <th scope="col">Suit</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Program Title</th>
+                    <th scope="col">Requirements</th>
+                    <th scope="col">Editing Date</th>
+                    <th scope="col">From</th>
+                    <th scope="col">To</th>
+                    <th scope="col">Remarks</th>
+                    <th scope="col">Approval Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if ($userBookings->count() > 0)
+                    @foreach ($userBookings as $booking)
+                        <tr>
+                            <td>{{ $booking->id }}</td>
+                            <td>{{ $booking->suitName }}</td>
+                            <td>{{ $booking->name }}</td>
+                            <td>{{ $booking->program_name}}</td>
+                            <td>{{ $booking->equipname }}</td>
+                            <td>{{ $booking->editing_date }}</td>
+                            <td>{{ $booking->start_time }}</td>
+                            <td>{{ $booking->endtime_time }}</td>
+                            <td>{{ $booking->remarks }}</td>
+                            <td>{{ $booking->approval2_time }}</td>
+                            <td>
+                                <div class="btn-group" role="group">
+                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
+                                        data-bs-target="#viewData">View</button>
+                                </div>
+                            </td>
+                        </tr>
+                    @endforeach
+                @else
+                    <tr>
+                        <td colspan="20" style="text-align: center"><small>No entries yet</small></td>
+                        </td>
+                    </tr>
+                @endif
+            </tbody>
+        </table>
     </div>
 </div>
+

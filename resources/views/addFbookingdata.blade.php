@@ -15,8 +15,13 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label for="" class="form-label">Program title</label>
-                                    <input type="text" name="ptitle" class="form-control ptitle" wire:model='ptitle'
-                                        value="{{ old('ptitle') }}">
+                                    <select class="form-select" name="ptitle" class="form-control ptitle"
+                                    wire:model='ptitle' value="{{ old('ptitle') }}">
+                                        <option>--Select program--</option>
+                                        @foreach ($getProgramTitle as $producer)
+                                            <option value="{{ $producer->id}}">{{ $producer->program_name }}</option>
+                                        @endforeach
+                                    </select>                                    
                                     <div class="form-text">Select your program</div>
                                     <div class="form-text" style="color:red">
                                         @error('ptitle')
@@ -48,7 +53,7 @@
                                         value="{{ old('producer') }}">
                                         <option>--Select Producer--</option>
                                         @foreach ($getproducer as $producer)
-                                            <option value="{{ $producer->id }}">{{ $producer->full_name }}</option>
+                                            <option value="{{ $producer->id  }}">{{ $producer->full_name }}</option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Select your producer</div>
@@ -127,7 +132,7 @@
                                         value="{{ old('equiments') }}">
                                         <option>--Select Editing suit--</option>
                                         @foreach ($getequipments as $equiments)
-                                            <option value="{{ $equiments->id }}">{{ $equiments->full_name }}</option>
+                                            <option value="{{ $equiments->id }}">{{ $equiments->equipname }}</option>
                                         @endforeach
                                     </select>
                                     <div class="form-text">Editor, graphics, mics for sounds etc.</div>

@@ -36,6 +36,7 @@ return new class extends Migration
             $table->date('approval3_time')->nullable();
             $table->string('comments')->nullable();
             $table->foreignId('user_id');
+            $table->foreignId('editor_id')->nullable();
             $table->date('updated_at');
             $table->date('created_at');            
         });

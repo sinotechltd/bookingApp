@@ -141,7 +141,7 @@
                         @endif
                     </td>
                     <td>
-                        <a class="btn-group" role="group" href="{{ url('/fcstoapproveline', $fbooking->id) }}">
+                        <a class="btn-group" role="group" href="{{ url('/ftpmapproveline', $fbooking->id) }}">
                             <button type="button" class="btn btn-sm btn-primary">Approve</button>
                         </a>
                         <a class="btn-group" role="group">
