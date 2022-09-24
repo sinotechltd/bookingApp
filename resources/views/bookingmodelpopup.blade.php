@@ -201,7 +201,7 @@
                                         value="{{ old('equiments') }}">
                                         <option>--Select Equipments --</option>
                                         @foreach ($getequipments as $equiments)
-                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
+                                            <option value="{{ $equiments->id }}">{{ $equiments->equipname }}</option>
                                         @endforeach
                                     </select>                                   
                                     {{-- <select class="form-select equiments" name="equiments" wire:model='equiments'

@@ -128,10 +128,10 @@
                     @foreach ($userBooking as $fbooking)
                         <tr>
                             <td>{{ $fbooking->id }}</td>
-                            <td>{{ $fbooking->suitID }}</td>
-                            <td>{{ $fbooking->user_id }}</td>
-                            <td>{{ $fbooking->program_title }}</td>
-                            <td>{{ $fbooking->requirements }}</td>
+                            <td>{{ $fbooking->suitName }}</td>
+                            <td>{{ $fbooking->name }}</td>
+                            <td>{{ $fbooking->program_name }}</td>
+                            <td>{{ $fbooking->equipname }}</td>
                             <td>{{ $fbooking->editing_date }}</td>
                             <td>{{ $fbooking->start_time }}</td>
                             <td>{{ $fbooking->endtime_time }}</td>

@@ -19,14 +19,14 @@
                     <tr>
                         <th>Date</th>
                         <th>
-                            {{$mon}}
+                            {{ $mon }}
                         </th>
-                        <th>{{$tue->format('d-m-Y')}}</th>
-                        <th>{{$wed->format('d-m-Y')}}</th>
-                        <th>{{$thurs->format('d-m-Y')}}</th>
-                        <th>{{$friday->format('d-m-Y')}}</th>
-                        <th>{{$sat->format('d-m-Y')}}</th>
-                        <th>{{$sun->format('d-m-Y')}}</th>
+                        <th>{{ $tue->format('d-m-Y') }}</th>
+                        <th>{{ $wed->format('d-m-Y') }}</th>
+                        <th>{{ $thurs->format('d-m-Y') }}</th>
+                        <th>{{ $friday->format('d-m-Y') }}</th>
+                        <th>{{ $sat->format('d-m-Y') }}</th>
+                        <th>{{ $sun->format('d-m-Y') }}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,54 +42,184 @@
                             <label><strong>Program</strong></label>
                         </td>
                         <td>
+                            @if (!$approvalSuccess)
+                                <label>
+                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                </label>
+                            @else
+                                <label>
+                                    {{ $approvalSuccess->program_name }}
+                                </label>
+                            @endif
+                        </td>
+                        <td>
                             <label>
-                                {{-- {{$ApprovalSuccess->program_title}} --}}
+                                @if (!$tueApprovalSuccess)
+                                    <label>
+                                        <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $tueApprovalSuccess->program_name }}
+                                    </label>
+                                @endif
                             </label>
                         </td>
                         <td>
-                            <label>Program Title</label>
+                            <label>
+                                @if (!$wedApprovalSuccess)
+                                    <label>
+                                        <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $wedApprovalSuccess->program_name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                            <label>Program Title</label>
+                            <label>
+                                @if (!$thursApprovalSuccess)
+                                    <label>
+                                        <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $thursApprovalSuccess->program_name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                            <label>Program Title</label>
+                            <label>
+                                @if (!$friApprovalSuccess)
+                                    <label>
+                                        <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $friApprovalSuccess->program_name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                            <label>Program Title</label>
+                            @if (!$satApprovalSuccess)
+                                <label>
+                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                </label>
+                            @else
+                                <label>
+                                    {{ $satApprovalSuccess->program_name }}
+                                </label>
+                            @endif
                         </td>
                         <td>
-                            <label>Program Title</label>
+                            @if (!$sunApprovalSuccess)
+                                <label>
+                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                </label>
+                            @else
+                                <label>
+                                    {{ $sunApprovalSuccess->program_name }}
+                                </label>
+                            @endif
                         </td>
-                        <td>
-                            <label>Program Title</label>
-                        </td>
-
                     </tr>
                     <tr>
                         <td>
                             <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            @if (!$approvalSuccess)
+                                <label>
+                                    <p>-not booked-</p>
+                                </label>
+                            @else
+                                <label>
+                                    {{ $approvalSuccess->name }}
+                                </label>
+                            @endif
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$tueApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $tueApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$wedApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $wedApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
+
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$thursApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $thursApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$friApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $friApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$satApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $satApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label>
+                                @if (!$satApprovalSuccess)
+                                    <label>
+                                        <p>-not booked-</p>
+                                    </label>
+                                @else
+                                    <label>
+                                        {{ $satApprovalSuccess->name }}
+                                    </label>
+                                @endif
+                            </label>
                         </td>
                     </tr>
                     <tr>
@@ -97,74 +227,156 @@
                             <label>Editor</label>
                         </td>
                         <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
+                            @if (!$approvalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($approvalSuccess->editor > 0)
+                                    <label>
+                                        {{ $approvalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
+                        </td>
+                        <td> @if (!$tueApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($tueApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $tueApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
+                        </td>
+                        <td> @if (!$wedApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($wedApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $wedApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
                         </td>
                         <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
+                            @if (!$thursApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($thursApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $thursApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
                         </td>
                         <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
+                            @if (!$friApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($friApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $friApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
                         </td>
                         <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
+                            @if (!$satApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($satApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $satApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
                         </td>
                         <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
-                        </td>
-                        <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
-                        </td>
-                        <td>
-                            <select class="form-select presenters" name="presenters">
-                                <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
-                            </select>
-
+                            @if (!$sunApprovalSuccess)
+                            <p>-not booked-</p>
+                            @else
+                                @if ($sunApprovalSuccess->editor > 0)
+                                    <label>
+                                        {{ $sunApprovalSuccess->editor }}
+                                    </label>
+                                @else
+                                    <form>
+                                        <select class="form-select presenters" name="presentersMonMorning">
+                                            <option>--Select Editor--</option>
+                                            @foreach ($editor as $producer)
+                                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                                </option>
+                                            @endforeach
+                                        </select>
+                                        <button class="btn btn-small btn-success">Assign</button>
+                                    </form>
+                                @endif
+                            @endif
                         </td>
                     </tr>
                 <tbody>
@@ -204,28 +416,28 @@
                     </tr>
                     <tr>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                     </tr>
                     <tr>
@@ -235,70 +447,70 @@
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
@@ -340,28 +552,28 @@
                     </tr>
                     <tr>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                     </tr>
                     <tr>
@@ -371,70 +583,70 @@
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
@@ -477,28 +689,28 @@
                     </tr>
                     <tr>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                         <td>
-                             <label><strong>User</strong></label>
+                            <label><strong>User</strong></label>
                         </td>
                     </tr>
                     <tr>
@@ -508,70 +720,70 @@
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>
                         <td>
                             <select class="form-select presenters" name="presenters">
                                 <option>--Select Editor--</option>
-                                 @foreach ($editor as $producer)
-                                <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
-                                </option>
-                            @endforeach
+                                @foreach ($editor as $producer)
+                                    <option value="{{ $producer->full_name }}">{{ $producer->full_name }}
+                                    </option>
+                                @endforeach
                             </select>
 
                         </td>

@@ -5,6 +5,7 @@ namespace App\Http\Livewire;
 use App\Models\EditingFac;
 use App\Models\EmployeeTable;
 use App\Models\Inventory;
+use App\Models\ProgramsTable;
 use App\Models\Suits;
 use Livewire\Component;
 
@@ -53,9 +54,16 @@ class ClientEditingFacility extends Component
     public function render()
     {
         $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
-        $userBooking = EditingFac::where('user_id', '=', session('LoggedUser'))->get();
+        $userBooking = EditingFac::where('user_id', '=', session('LoggedUser'))
+        ->join('suits','editing_facs.suitID','suits.id')
+        ->join('users','editing_facs.user_id','users.id')
+        ->join('programs_tables','editing_facs.program_title','programs_tables.id')
+        ->join('inventories','editing_facs.producer','inventories.id')
+        ->join('employee_tables','editing_facs.requirements','employee_tables.id')
+        ->get();
         $getequipments = Inventory::all();
         $geteSuits = Suits::all();
-        return view('livewire.client-editing-facility',['userBooking' => $userBooking],compact('getproducer','getequipments','geteSuits'))->layout('livewire.layouts.client');
+        $getProgramTitle = ProgramsTable::all();
+        return view('livewire.client-editing-facility',['userBooking' => $userBooking],compact('getproducer','getequipments','geteSuits','getProgramTitle'))->layout('livewire.layouts.client');
     }
 }

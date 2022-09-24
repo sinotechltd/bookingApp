@@ -74,10 +74,10 @@
                         @foreach ($userBooking as $booking)
                             <tr>
                                 <td>{{ $booking->id }}</td>
-                                <td>{{ $booking->suitID }}</td>
-                                <td>{{ $booking->program_title }}</td>
+                                <td>{{ $booking->suitName }}</td>
+                                <td>{{ $booking->program_name }}</td>
                                 <td>{{ $booking->program_topic }}</td>
-                                <td>{{ $booking->producer }}</td>
+                                <td>{{ $booking->full_name }}</td>
                                 <td>{{ $booking->editing_date }}</td>
                                 <td>{{ $booking->start_time }}</td>
                                 <td>{{ $booking->endtime_time }}</td>
