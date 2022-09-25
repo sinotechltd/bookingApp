@@ -15,7 +15,7 @@
                         </li> --}}
                     </ul>
                 </div>
-                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+                @include('logout')
             </div>
         </nav>
     </div>
@@ -30,21 +30,18 @@
             <a class="nav-link" href="/tpmrejected">Rejected</a>
         </li>
     </ul>
+</div>
+<div class="container">
     <div class="row">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Ref</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Program Title</th>
-                    <th scope="col">Items Booked</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Recording Time</th>
-                    <th scope="col">Guests</th>
-                    <th scope="col">Team Leader</th>
-                    <th scope="col">Remarks</th>
-                    <th scope="col">Date</th>
                     <th scope="col">Aproval date</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Recording Time</th>
+                    <th scope="col">Team Leader</th>
+                    <th scope="col">Approval</th>
                     <th scope="col">Modify</th>
 
                 </tr>
@@ -54,20 +51,16 @@
                     @foreach ($userApproval as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
-                            <td>{{ $booking->user_id }}</td>
-                            <td>{{ $booking->program_title }}</td>
-                            <td>{{ $booking->items_booked }}</td>
-                            <td>{{ $booking->location }}</td>
-                            <td>{{ $booking->recording_time }}</td>
-                            <td>{{ $booking->guests }}</td>
-                            <td>{{ $booking->shift_leader }}</td>
-                            <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
+                            <td>{{ $booking->name }}</td>
+                            <td>{{ $booking->recording_time }}</td>
+                            <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->approval2_time }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewData">View</button>
+                                    <a class="btn-group btn-sm btn-primary" role="group"
+                                        href="{{ url('view', $booking->id) }}">View
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -88,12 +81,9 @@
                     <th scope="col">Ref</th>
                     <th scope="col">Suit</th>
                     <th scope="col">User</th>
-                    <th scope="col">Program Title</th>
-                    <th scope="col">Requirements</th>
                     <th scope="col">Editing Date</th>
                     <th scope="col">From</th>
                     <th scope="col">To</th>
-                    <th scope="col">Remarks</th>
                     <th scope="col">Approval Date</th>
                     <th scope="col">Action</th>
                 </tr>
@@ -105,17 +95,15 @@
                             <td>{{ $booking->id }}</td>
                             <td>{{ $booking->suitName }}</td>
                             <td>{{ $booking->name }}</td>
-                            <td>{{ $booking->program_name}}</td>
-                            <td>{{ $booking->equipname }}</td>
                             <td>{{ $booking->editing_date }}</td>
                             <td>{{ $booking->start_time }}</td>
                             <td>{{ $booking->endtime_time }}</td>
-                            <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->approval2_time }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewData">View</button>
+                                    <a class="btn-group" role="group" href="{{ url('/eview', $booking->id) }}">
+                                        <button type="submit" class="btn btn-sm btn-primary">View</button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -130,4 +118,3 @@
         </table>
     </div>
 </div>
-

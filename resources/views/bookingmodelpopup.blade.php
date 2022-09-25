@@ -18,7 +18,7 @@
                                         wire:model='ptitle' value="{{ old('ptitle') }}">
                                         <option>--Select Program--</option>
                                         @foreach ($getProgramTitle as $program)
-                                            <option value="{{ $program->program_name }}">{{ $program->program_name }}
+                                            <option value="{{ $program->id}}">{{ $program->program_name }}
                                             </option>
                                         @endforeach
                                     </select>

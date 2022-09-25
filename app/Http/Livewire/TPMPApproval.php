@@ -10,7 +10,10 @@ class TPMPApproval extends Component
 {
     public function render()
     {
-        $userApproval= Master_booking::where('approver2_id', '=', session('LoggedUser'))->where('approval_level2', '=', 'Approved')->get();
+        $userApproval= Master_booking::select('master_bookings.*', 'users.name')
+        ->where('approver2_id', '=', session('LoggedUser'))->where('approval_level2', '=', 'Approved')
+        ->join('users', 'master_bookings.user_id', 'users.id')
+        ->get();
         $userBookings = EditingFac::select('editing_facs.*','suits.suitName','users.name','programs_tables.program_name','inventories.equipname')
         ->where('approver2_id', '=', session('LoggedUser'))
         ->where('approval_level2', '=', 'Approved')

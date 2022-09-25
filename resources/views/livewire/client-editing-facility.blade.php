@@ -16,7 +16,7 @@
                         </li>
                     </ul>
                 </div>
-                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+                @include('logout')
             </div>
         </nav>
     </div>
@@ -48,24 +48,20 @@
             </div>
         @endif
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Ref</th>
                         <th scope="col">Suit Booked</th>
-                        <th scope="col">Program Title</th>
-                        <th scope="col">Topic</th>
-                        <th scope="col">Producer</th>
                         <th scope="col">Editing date</th>
                         <th scope="col">From</th>
                         <th scope="col">To</th>
-                        <th scope="col">Remarks</th>
                         <th scope="col">HON</th>
                         <th scope="col">TPM</th>
                         <th scope="col">CSTO</th>
-                        <th scope="col">Comments</th>                       
+                        <th scope="col">Action</th>
 
                     </tr>
                 </thead>
@@ -75,13 +71,10 @@
                             <tr>
                                 <td>{{ $booking->id }}</td>
                                 <td>{{ $booking->suitName }}</td>
-                                <td>{{ $booking->program_name }}</td>
-                                <td>{{ $booking->program_topic }}</td>
-                                <td>{{ $booking->full_name }}</td>
+
                                 <td>{{ $booking->editing_date }}</td>
                                 <td>{{ $booking->start_time }}</td>
                                 <td>{{ $booking->endtime_time }}</td>
-                                <td>{{ $booking->remarks }}</td>
                                 <td>
                                     @if ($booking->approval_level1 == 'Pending')
                                         <span class="badge bg-secondary">Pending</span>
@@ -108,8 +101,14 @@
                                     @elseif($booking->approval_level3 == 'Rejected')
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
-                                </td>{{$booking->comments}}
-                                <td>                                    
+                                </td>
+                                <td>
+                                    <div class="btn-group" role="group">
+                                        <a class="btn-group btn-sm btn-primary" role="group"
+                                            href="{{ url('fclientview', $booking->id) }}">View
+
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach

@@ -15,7 +15,7 @@
                         </li> --}}
                     </ul>
                 </div>
-                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+                @include('logout')
             </div>
         </nav>
     </div>
@@ -29,32 +29,17 @@
         <li class="nav-item">
             <a class="nav-link" href="/rejected">Rejected</a>
         </li>
-    </ul>
-    <div class="row">
-        @if (Session::get('Success'))
-            <div class="alert alert-success">
-                {{ Session::get('Success') }}
-            </div>
-        @endif
-        @if (Session::get('Failed'))
-            <div class="alert alert-danger">
-                {{ Session::get('Failed') }}
-            </div>
-        @endif
+    </ul>   
+    <div class="container">
         <table class="table table-hover">
             <thead>
                 <tr>
                     <th scope="col">Ref</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Program Title</th>
-                    <th scope="col">Items Booked</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Recording Time</th>
-                    <th scope="col">Guests</th>
-                    <th scope="col">Team Leader</th>
-                    <th scope="col">Remarks</th>
                     <th scope="col">Date</th>
-                    <th scope="col">HON Approval</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Recording Time</th>
+                    <th scope="col">Team Leader</th>
+                    <th scope="col">Approval</th>
                     <th scope="col">Modify</th>
 
                 </tr>
@@ -64,15 +49,10 @@
                     @foreach ($userBoking as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
-                            <td>{{ $booking->user_id }}</td>
-                            <td>{{ $booking->program_title }}</td>
-                            <td>{{ $booking->items_booked }}</td>
-                            <td>{{ $booking->location }}</td>
-                            <td>{{ $booking->recording_time }}</td>
-                            <td>{{ $booking->guests }}</td>
-                            <td>{{ $booking->shift_leader }}</td>
-                            <td>{{ $booking->remarks }}</td>
                             <td>{{ $booking->date_booked }}</td>
+                            <td>{{ $booking->name }}</td>
+                            <td>{{ $booking->recording_time }}</td>
+                            <td>{{ $booking->shift_leader }}</td>
                             <td>
                                 @if ($booking->approval_level1 == 'Pending')
                                     <span class="badge bg-secondary">Awaiting your approval</span>
@@ -83,10 +63,10 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/approveline', $booking->id) }}">
+                                <a class="btn-group" role="group" href="{{ url('/viewLine', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group" href="{{ url('/rejectline', $booking->id) }}">
+                                <a class="btn-group" role="group" href="{{ url('/rviewline', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
@@ -112,13 +92,11 @@
                     <th scope="col">Ref</th>
                     <th scope="col">Suit</th>
                     <th scope="col">User</th>
-                    <th scope="col">Program Title</th>
-                    <th scope="col">Requirements</th>
+                    <th scope="col">Program Title</th>                    
                     <th scope="col">Editing Date</th>
                     <th scope="col">From</th>
-                    <th scope="col">To</th>
-                    <th scope="col">Remarks</th>
-                    <th scope="col">HON Approval</th>
+                    <th scope="col">To</th>                    
+                    <th scope="col">Approval</th>
                     <th scope="col">Modify</th>
 
                 </tr>
@@ -130,12 +108,10 @@
                             <td>{{ $fbooking->id }}</td>
                             <td>{{ $fbooking->suitName }}</td>
                             <td>{{ $fbooking->name }}</td>
-                            <td>{{ $fbooking->program_name }}</td>
-                            <td>{{ $fbooking->equipname }}</td>
+                            <td>{{ $fbooking->program_name }}</td>                            
                             <td>{{ $fbooking->editing_date }}</td>
                             <td>{{ $fbooking->start_time }}</td>
-                            <td>{{ $fbooking->endtime_time }}</td>
-                            <td>{{ $fbooking->remarks }}</td>
+                            <td>{{ $fbooking->endtime_time }}</td>                           
                             <td>
                                 @if ($fbooking->approval_level1 == 'Pending')
                                     <span class="badge bg-secondary">Awaiting your approval</span>
@@ -146,11 +122,11 @@
                                 @endif
                             </td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/fapproveline', $fbooking->id) }}">
+                                <a class="btn-group" role="group" href="{{ url('/vieweditLin', $fbooking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-danger" wire:click="rejectReason({{$fbooking->id}})" data-bs-toggle="modal" data-bs-target="#rejectReason">Reject</button>
+                                 <a class="btn-group" role="group" href="{{ url('/vieweditline', $fbooking->id) }}">
+                                    <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
                         </tr>
@@ -165,7 +141,8 @@
         </table>
     </div>
 </div>
-<div class="container-flud">
+</div>
+<div class="container">
     <div wire:ignore.self class="modal fade" id="rejectReason" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl" style="width:1250px;">
             <div class="modal-content">
@@ -190,11 +167,12 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                         <a class="btn-group" role="group">
-                            <button type="submit" class="btn btn-sm btn-danger"wire:click="rejectReason" >Reject</button>
+                            <button type="submit"
+                                class="btn btn-sm btn-danger"wire:click="rejectReason">Reject</button>
                         </a>
                     </div>
                 </form>
-            </div>            
+            </div>
         </div>
     </div>
 </div>
