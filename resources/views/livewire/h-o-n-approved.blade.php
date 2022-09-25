@@ -64,10 +64,10 @@
                             <td>{{ $booking->approval1_time }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewProductionData"
-                                        wire:click="viewDetails({{ $booking->id }})">View</button>
-                                        {{-- {{ console_log($booking);}} --}}
+                                    <a class="btn-group btn-sm btn-primary" role="group"
+                                        href="{{ url('view', $booking->id) }}">View
+                                        
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -85,10 +85,7 @@
             <thead>
                 <tr>
                     <th scope="col">Ref</th>
-                    <th scope="col">Suit</th>
-                    <th scope="col">User</th>
-                    <th scope="col">Program Title</th>
-                    <th scope="col">Requirements</th>
+                    <th scope="col">Suit</th>                   
                     <th scope="col">Editing Date</th>
                     <th scope="col">From</th>
                     <th scope="col">To</th>
@@ -102,10 +99,7 @@
                     @foreach ($userBooking as $booking)
                         <tr>
                             <td>{{ $booking->id }}</td>
-                            <td>{{ $booking->suitID }}</td>
-                            <td>{{ $booking->user_id }}</td>
-                            <td>{{ $booking->program_title }}</td>
-                            <td>{{ $booking->requirements }}</td>
+                            <td>{{ $booking->suitID }}</td>                           
                             <td>{{ $booking->editing_date }}</td>
                             <td>{{ $booking->start_time }}</td>
                             <td>{{ $booking->endtime_time }}</td>
@@ -113,8 +107,10 @@
                             <td>{{ $booking->approval1_time }}</td>
                             <td>
                                 <div class="btn-group" role="group">
-                                    <button type="button" class="btn btn-sm btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#viewData">View</button>
+                                    <a class="btn-group" role="group"
+                                        href="{{ url('/eview', $booking->id) }}">
+                                        <button type="submit" class="btn btn-sm btn-primary">View</button>
+                                    </a>
                                 </div>
                             </td>
                         </tr>
@@ -127,130 +123,6 @@
                 @endif
             </tbody>
         </table>
-    </div>
-</div>
-<div class="container-fluid">
-    {{-- view pop up modal production facilities --}}
-    <div class="modal fade" id="viewProductionData" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">View producction Booking information</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        wire:click="view-close-modal"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label for="" class="form-label">Booking Reference</label>
-                                <div class="form-select" name="ptitle" class="form-control ptitle">
-                                    {{ $viewBookingid }}</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">User</label>
-                                <div type="text" name="program_topic" class="form-control program_topic">
-                                    {{ $viewUserid }}
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Program</label>
-                                <div class="form-select" name="team_leader" wire:model='team_leader'>
-                                    {{ $viewProgram }}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Items booked</label>
-                                <div class="form-select producer" name="producer" aria-label="Default select example"
-                                    wire:model='producer'>
-                                    {{ $viewItemsBooked }}</div>
-
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Location</label>
-                                <div type="text" name="operation_crew" class="form-control operation_crew">
-                                    {{ $viewlocation }}</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Recording Time</label>
-                                <div type="date" name="bookingdate" class="form-control bookingdate">
-                                    {{ $viewRecordingTime }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-start">
-                        {{-- <div class="col">
-                                <div class="mb-3">
-                                    <label class="form-label">Recording Time</label>
-                                    <div type="time" name="recordingtime" class="form-control recordingtime">{{ $viewBookingid}}</div>
-                                </div>
-                            </div> --}}
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Guests</label>
-                                <div type="time" name="settingtime" class="form-control settingtime">
-                                    {{ $viewGuests }}</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Shift leader</label>
-                                <div type="time" name="rehearsal_time" class="form-control rehearsal_time">
-                                    {{ $viewLeader }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Date booked</label>
-                                <div type="text" name="location" class="form-control location">
-                                    {{ $viewBookedDate }}</div>
-                            </div>
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Aprroval Time</label>
-                                <div type="text" name="designer" class="form-control designer">
-                                    {{ $viewApprovalTime }}</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Remarks</label>
-                                <textarea name="remarks" class="form-control" disabled>{{ $viewRemarks }}</textarea>
-                            </div> 
-                        </div>
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Approval comments</label>
-                                {{-- <textarea name="remarks" class="form-control" disabled>{{ $viewapprovalComments}}</textarea> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
-                            wire:click="view-close-modal">Close</button>
-                        {{-- <button type="submit" class="btn btn-primary newbooking">Submit</button> --}}
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <div class="container-fluid">

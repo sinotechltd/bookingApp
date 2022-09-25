@@ -10,6 +10,11 @@ use Illuminate\Support\Facades\Hash;
 
 class MainController extends Controller
 {
+    public function viewRecord(int $id)
+    {
+        $record = Master_booking::where('id',$id)->first();
+        return view('livewire.hon-fac-approved-view',compact('record'))->layout('livewire.layouts.base');
+    }
     //public $editorMonMorningA;
     public function assignEditorMonMoA(int $id,Request $request)
     {

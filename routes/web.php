@@ -13,6 +13,8 @@ use App\Http\Livewire\CSTOPApproved;
 use App\Http\Livewire\CSTOPRejected;
 use App\Http\Livewire\HONApproval;
 use App\Http\Livewire\HONApproved;
+use App\Http\Livewire\HonEditApprovedView;
+use App\Http\Livewire\HonFacApprovedView;
 use App\Http\Livewire\HONRejected;
 use App\Http\Livewire\TimeTable;
 use App\Http\Livewire\TPMPage;
@@ -57,6 +59,9 @@ Route::group(['middleware' => ['AutCheck']], function () {
    Route::get('rejected', HONRejected::class);
    Route::get('/approveline/{id}',[MainController::class, 'aproveline']);
    Route::get('/rejectline/{id}',[MainController::class, 'rejectline']);
+   //view routes
+   Route::get('view/{id}', [HonFacApprovedView::class, 'viewRecord']); 
+   Route::get('eview/{id}', [HonEditApprovedView::class, 'viewRecord']); 
    //eding facilities booking
    Route::get('/fapproveline/{id}',[MainController::class, 'faproveline']);
    Route::get('/frejectline/{id}',[MainController::class, 'frejectline']);
