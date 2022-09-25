@@ -8,17 +8,28 @@ use App\Http\Livewire\BookingComponent;
 use App\Http\Livewire\ClientBookingPage;
 use App\Http\Livewire\ClientEditingFacility;
 use App\Http\Livewire\ClientEquipments;
+use App\Http\Livewire\ClientView;
 use App\Http\Livewire\CSTOPage;
 use App\Http\Livewire\CSTOPApproved;
 use App\Http\Livewire\CSTOPRejected;
+use App\Http\Livewire\FclientView;
 use App\Http\Livewire\HONApproval;
 use App\Http\Livewire\HONApproved;
+use App\Http\Livewire\HonApproveEditView;
+use App\Http\Livewire\HonconfirmApprove;
+use App\Http\Livewire\HonconfirmReject;
 use App\Http\Livewire\HonEditApprovedView;
 use App\Http\Livewire\HonFacApprovedView;
 use App\Http\Livewire\HONRejected;
+use App\Http\Livewire\HonRejectEditView;
 use App\Http\Livewire\TimeTable;
+use App\Http\Livewire\TpmApproveEditView;
+use App\Http\Livewire\TpmApproveProdView;
 use App\Http\Livewire\TPMPage;
 use App\Http\Livewire\TPMPApproval;
+use App\Http\Livewire\TPMPrejected;
+use App\Http\Livewire\TpmRejectEditView;
+use App\Http\Livewire\TpmRejectProdView;
 
 /*
 |--------------------------------------------------------------------------
@@ -56,12 +67,43 @@ Route::group(['middleware' => ['AutCheck']], function () {
    //HONroutes
    Route::get('hon', HONApproval::class);
    Route::get('approved', HONApproved::class);
-   Route::get('rejected', HONRejected::class);
-   Route::get('/approveline/{id}',[MainController::class, 'aproveline']);
+   Route::get('rejected', HONRejected::class);   
+   //Route::get('/approveline/{id}',[MainController::class, 'aproveline']);
    Route::get('/rejectline/{id}',[MainController::class, 'rejectline']);
    //view routes
    Route::get('view/{id}', [HonFacApprovedView::class, 'viewRecord']); 
    Route::get('eview/{id}', [HonEditApprovedView::class, 'viewRecord']); 
+   Route::get('fclientview/{id}', [FclientView::class, 'viewRecord']); 
+   Route::get('pclientview/{id}', [ClientView::class, 'viewRecord']); 
+   //approve 
+   Route::get('/viewLine/{id}',[HonconfirmApprove::class, 'veiwline']);
+   Route::post('/approveline',[HonconfirmApprove::class, 'aproveline']);
+   //reject    
+   Route::get('/rviewline/{id}',[HonconfirmReject::class, 'veiwline']);
+   Route::post('/rejectline',[HonconfirmReject::class, 'rejectline']);
+
+   //editing facilities approve 
+   Route::get('/vieweditLin/{id}',[HonApproveEditView::class, 'veiwline']);
+   Route::post('/approveditline',[HonApproveEditView::class, 'aproveline']);
+   //editing facilities reject    
+   Route::get('/vieweditline/{id}',[HonRejectEditView::class, 'veiwline']);
+   Route::post('/rejecteditline',[HonRejectEditView::class, 'rejectline']);
+
+
+   //editing facilities tpm approve 
+   Route::get('/tpmvieweditLin/{id}',[TpmApproveEditView::class, 'veiwline']);
+   Route::post('/tpmapproveditline',[TpmApproveEditView::class, 'aproveline']);
+   //editing facilities tpmreject    
+   Route::get('/viewedittpmline/{id}',[TpmRejectEditView::class, 'veiwline']);
+   Route::post('/rejectetpmditline',[TpmRejectEditView::class, 'rejectline']);
+   //editing production tpm approve 
+   Route::get('/productionlineView/{id}',[TpmApproveProdView::class, 'veiwline']);
+   Route::post('/productionlineApprove',[TpmApproveProdView::class, 'aproveline']);
+   //editing production tpmreject    
+   Route::get('/productionlineViewr/{id}',[TpmRejectProdView::class, 'veiwline']);
+   Route::post('/prodrejectline',[TpmRejectProdView::class, 'rejectline']);
+
+   
    //eding facilities booking
    Route::get('/fapproveline/{id}',[MainController::class, 'faproveline']);
    Route::get('/frejectline/{id}',[MainController::class, 'frejectline']);
@@ -69,7 +111,7 @@ Route::group(['middleware' => ['AutCheck']], function () {
    Route::get('tpmpage', TPMPage::class);
    Route::get('tpm', TPMPage::class);
    Route::get('tpmapproved', TPMPApproval::class);
-   Route::get('tmprejected', TPMPApproval::class);
+   Route::get('/tpmrejected', [TPMPrejected::class,'index' ]);
    Route::get('/tpmapproveline/{id}',[MainController::class, 'tpmaproveline']);
    Route::get('/tpmrejectline/{id}',[MainController::class, 'tpmrejectline']);
    //eding facilities booking

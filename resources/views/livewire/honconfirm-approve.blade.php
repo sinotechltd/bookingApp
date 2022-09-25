@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking System</title>
+    <title>Approve page</title>
     {{-- Bootstrap Styles --}}
     <link href="{{ asset('imports/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
@@ -24,7 +24,7 @@
                             <a class="nav-link active" aria-current="page">View</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/approved">Approved</a>
+                            <a class="nav-link" href="/">New Book</a>
                         </li>
                     </ul>
                 </div>
@@ -33,30 +33,43 @@
         </nav>
     </div>
     <div class="container">
+        <div class="row">
+            @if (Session::get('Success'))
+                <div class="alert alert-success">
+                    {{ Session::get('Success') }}
+                </div>
+            @endif
+            @if (Session::get('Failed'))
+                <div class="alert alert-danger">
+                    {{ Session::get('Failed') }}
+                </div>
+            @endif
+        </div>
         <h5 class="modal-title">Booking information</h5>
+        <form wire:submit.prevent='aproveline' action="/approveline" method="post">
         <div class="modal-body">
+            @csrf
             <div class="row align-items-start">
                 <div class="col">
                     <div class="mb-3">
                         <label for="" class="form-label">Booking Reference</label>
-                        <div name="ptitle" class="form-control ptitle">
-                            {{ $record->id }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Suit</label>
-                        <div type="text" class="form-control program_topic">
-                            {{ $record->suitName }}
-                        </div>
+                        <input name="recordid" wire:model='recordid' class="form-control"
+                          value="{{ $record->id }}">                    
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Program</label>
-                        <div class="form-select" name="team_leader" wire:model='team_leader'>
+                        <div class="form-select" name="team_leader">
                             {{ $record->program_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Topic</label>
+                        <div class="form-select" name="team_leader">
+                            {{ $record->program_topic }}
                         </div>
                     </div>
                 </div>
@@ -64,7 +77,34 @@
                     <div class="mb-3">
                         <label class="form-label">User</label>
                         <div type="text" name="program_topic" class="form-control program_topic">
-                            {{ $recordname->name }}
+                            {{ $record->name }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row align-items-start">
+
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Booked Date</label>
+                        <div type="text" name="operation_crew" class="form-control operation_crew">
+                            {{ $record->date_booked }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Recording Time</label>
+                        <div type="date" name="bookingdate" class="form-control bookingdate">
+                            {{ $record->recording_time }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">Location</label>
+                        <div type="time" name="settingtime" class="form-control settingtime">
+                            {{ $record->location }}
                         </div>
                     </div>
                 </div>
@@ -82,63 +122,55 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Editing Date</label>
-                        <div type="text" name="operation_crew" class="form-control operation_crew">
-                            {{ $record->editing_date }}
+                        <label class="form-label">Items booked</label>
+                        <div class="form-control producer" name="producer" aria-label="Default select example"
+                            wire:model='producer'>
+                            {{ $record->equipname }}
                         </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Start Time</label>
-                        <div type="date" name="bookingdate" class="form-control bookingdate">
-                            {{ $record->start_time }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">To</label>
-                        <div type="time" name="settingtime" class="form-control settingtime">
-                            {{ $record->endtime_time }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-start">
 
+                    </div>
+                </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Remarks</label>
-                        <p> {{ $record->remarks }}</p>
+                        <label class="form-label">Items booked</label>
+                        <div class="form-control producer" name="producer" aria-label="Default select example"
+                            wire:model='producer'>
+                            {{ $record->equipname }}
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Remarks</label>
+                            <textarea  class="form-control">
+                            {{ $record->remarks }}
+                        </textarea>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="row align-items-start">
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Date booked</label>
-                        <div type="text" name="location" class="form-control location">
-                            {{ $record->booking_date }}
+               
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Approval comments</label>
+                            <textarea name="comments" wire:model='comments' class="form-control" placeholder="Write your comments here..."></textarea>
+                            <div class="form-text" style="color:red">
+                                @error('comments')
+                                    {{ $message }}
+                                @enderror
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Aprroval Date</label>
-                        <div type="text" name="designer" class="form-control designer">
-                            {{ $record->approval1_time }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-start">
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Approval comments</label>
-                        <p>{{ $record->comments }} </p>
-                    </div>
-                </div>
+                    <a class="btn-group" role="group" href="{{ url('/approveline', $record->id) }}">
+                        <button type="submit" class="btn btn-sm btn-primary">Approve</button>
+                    </a>
+                    {{-- <a class="btn-group" role="group" href="{{ url('/rejectline',  $record->id) }}">
+                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                    </a> --}}
+               
             </div>
             <div class="modal-footer">
                 <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
@@ -147,6 +179,7 @@
             </div>
 
         </div>
+    </form>
     </div>
 
 

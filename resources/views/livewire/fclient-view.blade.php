@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking System</title>
+    <title>confirm page</title>
     {{-- Bootstrap Styles --}}
     <link href="{{ asset('imports/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
 
@@ -24,7 +24,7 @@
                             <a class="nav-link active" aria-current="page">View</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/approved">Approved</a>
+                            <a class="nav-link" href="/">New Book</a>
                         </li>
                     </ul>
                 </div>
@@ -46,9 +46,9 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">User</label>
-                        <div type="text" name="program_topic" class="form-control program_topic">
-                            {{ $recordname->name }}
+                        <label class="form-label">Suit</label>
+                        <div type="text" class="form-control program_topic">
+                            {{ $record->suitName }}
                         </div>
                     </div>
                 </div>
@@ -57,6 +57,14 @@
                         <label class="form-label">Program</label>
                         <div class="form-select" name="team_leader" wire:model='team_leader'>
                             {{ $record->program_name }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">User</label>
+                        <div type="text" name="program_topic" class="form-control program_topic">
+                            {{ $record->name }}
                         </div>
                     </div>
                 </div>
@@ -74,36 +82,37 @@
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Location</label>
+                        <label class="form-label">Editing Date</label>
                         <div type="text" name="operation_crew" class="form-control operation_crew">
-                            {{ $record->location }}
+                            {{ $record->editing_date }}
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Recording Time</label>
+                        <label class="form-label">Start Time</label>
                         <div type="date" name="bookingdate" class="form-control bookingdate">
-                            {{ $record->recording_time }}
+                            {{ $record->start_time }}
+                        </div>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">To</label>
+                        <div type="time" name="settingtime" class="form-control settingtime">
+                            {{ $record->endtime_time }}
                         </div>
                     </div>
                 </div>
             </div>
             <div class="row align-items-start">
+
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Guests</label>
-                        <div type="time" name="settingtime" class="form-control settingtime">
-                            {{ $record->guests }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Shift leader</label>
-                        <div type="time" name="rehearsal_time" class="form-control rehearsal_time">
-                            {{ $record->shift_leader }}
-                        </div>
+                        <label class="form-label">Remarks</label>
+                        <textarea name="rehearsal_time" class="form-control">
+                            {{ $record->remarks }}
+                        </textarea>
                     </div>
                 </div>
             </div>
@@ -112,32 +121,57 @@
                     <div class="mb-3">
                         <label class="form-label">Date booked</label>
                         <div type="text" name="location" class="form-control location">
-                            {{ $record->date_booked }}
+                            {{ $record->booking_date }}
                         </div>
                     </div>
                 </div>
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Aprroval Date</label>
-                        <div type="text" name="designer" class="form-control designer">
-                            {{ $record->approval1_time }}
-                        </div>
+                        <label class="form-label">HON Approval</label>
+                        <br>
+                        @if ($record->approval_level1 == 'Pending')
+                            <span class="badge bg-secondary">Pending</span>
+                        @elseif ($record->approval_level1 == 'Approved')
+                            <span class="badge bg-success">Approved</span>
+                        @elseif($record->approval_level1 == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">TPM Approval</label>
+                        <br>
+                        @if ($record->approval_level2 == 'Pending')
+                            <span class="badge bg-secondary">Pending</span>
+                        @elseif ($record->approval_level2 == 'Approved')
+                            <span class="badge bg-success">Approved</span>
+                        @elseif($record->approval_level2 == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                        @endif
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label">CSTO Approval</label>
+                        <br>
+                        @if ($record->approval_level3 == 'Pending')
+                            <span class="badge bg-secondary">Pending</span>
+                        @elseif ($record->approval_level3 == 'Approved')
+                            <span class="badge bg-success">Approved</span>
+                        @elseif($record->approval_level3 == 'Rejected')
+                            <span class="badge bg-danger">Rejected</span>
+                        @endif
                     </div>
                 </div>
             </div>
             <div class="row align-items-start">
                 <div class="col">
                     <div class="mb-3">
-                        <label class="form-label">Remarks</label>
-                        <p>{{ $record->remarks }}</p>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
                         <label class="form-label">Approval comments</label>
-                        <p>
-                            {{ $record->comments }}
-                        </p>
+                        <textarea name="remarks" class="form-control">
+                                {{ $record->comments }}
+                            </textarea>
                     </div>
                 </div>
             </div>

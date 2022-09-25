@@ -162,25 +162,7 @@ class MainController extends Controller
         } else {
             return back()->with('Failed', 'something went wrong, try again');
         }
-    }
-    public function aproveline(int $id)
-    {
-        $userId = session('LoggedUser');
-        $bookingline = Master_booking::where('id', $id)->first();
-        $bookingline->approval_level1 = 'Approved';
-        $bookingline->approver1_id = $userId;
-        $bookingline->approval1_time = now();
-        $bookingline->save();
-        if ($bookingline) {
-            return back()->with('Success', 'Record Approved');
-            return redirect()->back();
-        } else {
-            return back()->with('Failed', 'something went wrong, try again');
-        }
-
-        // return redirect()->back();
-
-    }
+    }   
     public function rejectline(int $id)
     {
         $userId = session('LoggedUser');

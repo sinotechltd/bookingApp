@@ -17,7 +17,7 @@
                     </ul>
                     <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->
                 </div>
-                <a class="btn btn-sm btn-danger" href="{{ route('auth.logout') }}">Logout</a>
+                @include('logout')
             </div>
         </nav>
     </div>
@@ -45,24 +45,19 @@
     </div>
 
     {{-- Table with user boookings --}}
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <table class="table table-hover">
                 <thead>
                     <tr>
                         <th scope="col">Ref</th>
-                        <th scope="col">Program Title</th>
-                        <th scope="col">Items Booked</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Recording Time</th>
-                        <th scope="col">Guests</th>
-                        <th scope="col">Team Leader</th>
-                        <th scope="col">Remarks</th>
                         <th scope="col">Date</th>
+                        <th scope="col">Recording Time</th>
+                        <th scope="col">Team Leader</th>                       
                         <th scope="col">HON Approval</th>
                         <th scope="col">TPM Aproval</th>
                         <th scope="col">CSTO Approval</th>
-                        <th scope="col">Comments</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -70,14 +65,9 @@
                         @foreach ($userBooking as $booking)
                             <tr>
                                 <td>{{ $booking->id }}</td>
-                                <td>{{ $booking->program_title }}</td>
-                                <td>{{ $booking->items_booked }}</td>
-                                <td>{{ $booking->location }}</td>
-                                <td>{{ $booking->recording_time }}</td>
-                                <td>{{ $booking->guests }}</td>
-                                <td>{{ $booking->shift_leader }}</td>
-                                <td>{{ $booking->remarks }}</td>
                                 <td>{{ $booking->date_booked }}</td>
+                                <td>{{ $booking->recording_time }}</td>
+                                <td>{{ $booking->shift_leader }}</td>                                
                                 <td>
                                     @if ($booking->approval_level1 == 'Pending')
                                         <span class="badge bg-secondary">Pending</span>
@@ -104,9 +94,14 @@
                                     @elseif($booking->approval_level3 == 'Rejected')
                                         <span class="badge bg-danger">Rejected</span>
                                     @endif
-                                </td>
+                                </td>                                
                                 <td>
-                                {{ $booking->comments}}
+                                    <div class="btn-group" role="group">
+                                        <a class="btn-group btn-sm btn-primary" role="group"
+                                            href="{{ url('pclientview', $booking->id) }}">View
+
+                                        </a>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
