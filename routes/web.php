@@ -9,9 +9,13 @@ use App\Http\Livewire\ClientBookingPage;
 use App\Http\Livewire\ClientEditingFacility;
 use App\Http\Livewire\ClientEquipments;
 use App\Http\Livewire\ClientView;
+use App\Http\Livewire\CstoApproveEditView;
+use App\Http\Livewire\CstoApproveProdView;
 use App\Http\Livewire\CSTOPage;
 use App\Http\Livewire\CSTOPApproved;
 use App\Http\Livewire\CSTOPRejected;
+use App\Http\Livewire\CstorejectEditView;
+use App\Http\Livewire\CstorejectProdView;
 use App\Http\Livewire\FclientView;
 use App\Http\Livewire\HONApproval;
 use App\Http\Livewire\HONApproved;
@@ -102,6 +106,21 @@ Route::group(['middleware' => ['AutCheck']], function () {
    //editing production tpmreject    
    Route::get('/productionlineViewr/{id}',[TpmRejectProdView::class, 'veiwline']);
    Route::post('/prodrejectline',[TpmRejectProdView::class, 'rejectline']);
+
+   //editing facilities csto approve 
+   Route::get('/cstoapprovelineview/{id}',[CstoApproveEditView::class, 'veiwline']);
+   Route::post('/cstoapproveditline',[CstoApproveEditView::class, 'aproveline']);
+   //editing facilities csto reject    
+   Route::get('/cstorejectlineview/{id}',[CstorejectEditView::class, 'veiwline']);
+   Route::post('/cstorejecteditline',[CstorejectEditView::class, 'rejectline']);
+
+   
+   //editing production csto approve 
+   Route::get('/cstoapprovelinePview/{id}',[CstoApproveProdView::class, 'veiwline']);
+   Route::post('/cstoapproveproduct',[CstoApproveProdView::class, 'aproveline']);
+   //editing production csto reject    
+   Route::get('/ctorejectlineview/{id}',[CstorejectProdView::class, 'veiwline']);
+   Route::post('/ctorejectlineview',[CstorejectProdView::class, 'rejectline']);
 
    
    //eding facilities booking
