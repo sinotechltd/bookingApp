@@ -24,3 +24,5 @@ class CSTOPage extends Component
         return view('livewire.c-s-t-o-page', compact('userBoking', 'userBooking'))->layout('livewire.layouts.base');
     }
 }
+
+//Start by csto Approval and reejection

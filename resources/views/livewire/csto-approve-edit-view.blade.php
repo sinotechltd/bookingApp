@@ -1,4 +1,4 @@
-{{-- Editing facility approval view for tpm  --}}
+{{-- this view is for displaying records before Approving --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,6 +15,7 @@
 </head>
 
 <body>
+    You can see this page
     @include('clientNavbar')
     <div class="div">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -47,7 +48,7 @@
             @endif
         </div>
         <h5 class="modal-title">Booking information</h5>
-        <form wire:submit.prevent='aproveline' action="/tpmapproveditline" method="post">
+        <form wire:submit.prevent='cstoapproveditline' action="/cstoapproveditline" method="post">
             <div class="modal-body">
                 @csrf
                 <div class="row align-items-start">
@@ -130,20 +131,18 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn-group" role="group" href="{{ url('/tpmapproveditline', $record->id) }}">
+                <a class="btn-group" role="group" href="{{ url('/cstoapproveditline', $record->id) }}">
                     <button type="submit" class="btn btn-sm btn-primary">Approve</button>
                 </a>
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="/csto">Close
 
                 </a>
             </div>
-
     </div>
     </form>
     </div>
-
     {{-- Bootstrap Scrips --}}
     <script src="{{ asset('imports/bootstrap/js/bootstrap.min.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"

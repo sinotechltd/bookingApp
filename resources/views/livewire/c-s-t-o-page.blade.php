@@ -72,10 +72,10 @@
                             <td>{{ $booking->shift_leader }}</td>
                             <td>{{ $booking->approval_level3 }}</td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/cstoapproveline', $booking->id) }}">
+                                <a class="btn-group" role="group" href="{{ url('/cstoapprovelinePview', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group" href="{{ url('/ctorejectline', $booking->id) }}">
+                                <a class="btn-group" role="group" href="{{ url('/ctorejectlineview', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
@@ -131,13 +131,11 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn-group" role="group" href="{{ url('/fcstoapproveline', $fbooking->id) }}">
+                            <a class="btn-group" role="group" href="{{ url('/cstoapprovelineview', $fbooking->id) }}">
                                 <button type="button" class="btn btn-sm btn-primary">Approve</button>
                             </a>
-                            <a class="btn-group" role="group">
-                                <button type="button" class="btn btn-sm btn-danger"
-                                    wire:click="fctorejectline({{ $fbooking->id }})" data-bs-toggle="modal"
-                                    data-bs-target="#rejectReason">Reject</button>
+                            <a class="btn-group" role="group" href="{{ url('/cstorejectlineview', $fbooking->id) }}">
+                                <button type="button" class="btn btn-sm btn-danger">Reject</button>
                             </a>
                         </td>
                     </tr>
