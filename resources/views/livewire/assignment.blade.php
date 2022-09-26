@@ -239,7 +239,7 @@
                         @if (!$approvalSuccess)
                             <p>-not booked-</p> 
                         @else
-                            @if (!$approvalSuccess->editor_id)
+                            @if ($approvalSuccess->editor_id = 0)
                                 <form action="{{ route('assignmoa', $approvalSuccess->id) }}" method="POST">
                                     @csrf
                                     <select class="form-select presenters" name="editorMonMorning">
@@ -255,12 +255,12 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalMEname)
-                                @else
+                                {{-- @if (!$approvalMEname)
+                                @else --}}
                                     <label>
-                                        {{ $approvalMEname->full_name }}
+                                        {{ $approvalSuccess->full_name}}
                                     </label>
-                                @endif
+                                {{-- @endif --}}
 
                             @endif
                         @endif
@@ -285,10 +285,10 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalTEname)
+                                @if (!$tueApprovalSuccess)
                                 @else
                                     <label>
-                                        {{ $approvalTEname->full_name }}
+                                        {{ $tueApprovalSuccess->full_name }}
                                     </label>
                                 @endif
                             @endif
@@ -314,10 +314,10 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalWEname)
+                                @if (!$wedApprovalSuccess)
                                 @else
                                     <label>
-                                        {{ $approvalWEname->full_name }}
+                                        {{ $wedApprovalSuccess->full_name }}
                                     </label>
                                 @endif
                             @endif
@@ -344,10 +344,10 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalTHEname)
+                                @if (!$thursApprovalSuccess)
                                 @else
                                     <label>
-                                        {{ $approvalTHEname->full_name }}
+                                        {{ $thursApprovalSuccess->full_name }}
                                     </label>
                                 @endif
                             @endif
@@ -373,10 +373,10 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalFREname)
+                                @if (!$friApprovalSuccess)
                                 @else
                                     <label>
-                                        {{ $approvalFREname->full_name }}
+                                        {{ $friApprovalSuccess->full_name }}
                                     </label>
                                 @endif
                             @endif
@@ -659,12 +659,12 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$approvalBMEname)
+                                {{-- @if (!$approvalBMEname)
                                 @else
                                     <label>
                                         {{ $approvalBMEname->full_name }}
                                     </label>
-                                @endif
+                                @endif --}}
 
                             @endif
                         @endif
@@ -1468,12 +1468,12 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$EapprovalBMEname)
+                                {{-- @if (!$EapprovalBMEname)
                                 @else
                                     <label>
                                         {{ $EapprovalBMEname->full_name }}
                                     </label>
-                                @endif
+                                @endif --}}
 
                             @endif
                         @endif

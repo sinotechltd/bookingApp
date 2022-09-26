@@ -170,7 +170,7 @@
                
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
 
                 </a>
             </div>
