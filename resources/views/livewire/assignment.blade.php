@@ -1431,13 +1431,13 @@
                     </td>
                     <td>
                         <label>
-                            @if (!$EsatApprovalBSuccess)
+                            @if (!$EsunApprovalBSuccess)
                                 <label>
                                     <p>-not booked-</p>
                                 </label>
                             @else
                                 <label>
-                                    {{ $EsatApprovalBSuccess->name }}
+                                    {{ $EsunApprovalBSuccess->name }}
                                 </label>
                             @endif
                         </label>
@@ -1510,7 +1510,7 @@
                         @if (!$EwedApprovalBSuccess)
                             <p>-not booked-</p> 
                         @else
-                            @if (!$wedApprovalBSuccess->editor_id)
+                            @if (!$EwedApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EwedApprovalBSuccess->id) }}" method="POST">
                                     @csrf
                                     <select class="form-select presenters" name="editorMonMorning">
@@ -1526,10 +1526,10 @@
                                     </a>
                                 </form>
                             @else
-                                @if (!$EapprovalBCEname)
+                                @if (!$EapprovalBTWEname)
                                 @else
                                     <label>
-                                        {{ $EapprovalWBEname->full_name }}
+                                        {{ $EapprovalBTWEname->full_name }}
                                     </label>
                                 @endif
                             @endif
@@ -1628,7 +1628,7 @@
                         @if (!$EsunApprovalBSuccess)
                             <p>-not booked-</p> 
                         @else
-                            @if (!$esunApprovalBSuccess->editor_id)
+                            @if (!$EsunApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EsunApprovalBSuccess->id) }}" method="POST">
                                     @csrf
                                     <select class="form-select presenters" name="editorMonMorning">
@@ -1639,7 +1639,7 @@
                                         @endforeach
                                     </select>
                                     <a class="btn-group" role="group"
-                                        href="{{ url('/assignMonA', $EsunApprovaLBSuccess->id) }}">
+                                        href="{{ url('/assignMonA', $EsunApprovalBSuccess->id) }}">
                                         <button type="submit" class="btn btn-sm btn-success">Assign</button>
                                     </a>
                                 </form>
