@@ -1,0 +1,5 @@
+select editing_facs.*, users.name,programs_tables.program_name from ((bookingdb.editing_facs inner join users on editing_facs.user_id=users.id)inner join programs_tables on editing_facs.program_title=programs_tables.id) where bookingdb.editing_facs.editing_date ="2022/10/03" and bookingdb.editing_facs.suitID=2 and editing_facs.approval_level3='Approved'and editing_facs.start_time >= '17:00:00' ;
+
+
+-- php version 
+"select editing_facs.*, users.name,programs_tables.program_name from ((bookingdb.editing_facs inner join users on editing_facs.user_id=users.id)inner join programs_tables on editing_facs.program_title=programs_tables.id) where bookingdb.editing_facs.editing_date =\"2022/10/03\" and bookingdb.editing_facs.suitID=2 and editing_facs.approval_level3=\'Approved\'and editing_facs.start_time >= \'17:00:00\';";
