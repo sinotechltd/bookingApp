@@ -531,11 +531,10 @@ class Assignment extends Component
             }
         }
 
-        // 
         //suit b eveninin SAT morning
         $EsatApprovalBSuccess = EditingFac::select('editing_facs.*', 'users.name', 'programs_tables.program_name',)
             ->where('editing_facs.editing_date', $this->sat)
-            ->where('editing_facs.suitID', '=', '3')->where('editing_facs.approval_level3', '=', 'Approved')
+            ->where('editing_facs.suitID', '=', '2')->where('editing_facs.approval_level3', '=', 'Approved')
             ->where('editing_facs.start_time', '>=', '17:00:00')
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('programs_tables', 'editing_facs.program_title', 'programs_tables.id')
@@ -554,7 +553,7 @@ class Assignment extends Component
         //suit b eveninin SUN morning
         $EsunApprovalBSuccess = EditingFac::select('editing_facs.*', 'users.name', 'programs_tables.program_name',)
             ->where('editing_facs.editing_date', $this->sun)
-            ->where('editing_facs.suitID', '=', '3')->where('editing_facs.approval_level3', '=', 'Approved')
+            ->where('editing_facs.suitID', '=', '2')->where('editing_facs.approval_level3', '=', 'Approved')
             ->where('editing_facs.start_time', '>=', '17:00:00')
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('programs_tables', 'editing_facs.program_title', 'programs_tables.id')

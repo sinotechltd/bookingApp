@@ -5,25 +5,30 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" href="/">Manage Users</a>
+                            <a class="nav-link active"aria-current="page" href="/admin">Manage Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " aria-current="page">Admin Action</a>
+                            <a class="nav-link" href="/listprograms">Programmes</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" @disabled(true)>Admin Action</a>
+                            <a class="nav-link" href="/listemployees">Employees</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/listinventories">Inventories</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/listsuits">Suits</a>
                         </li>
                     </ul>
-                    <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->
+
                 </div>
-                < @include('logout')
+                @include('logout')
             </div>
         </nav>
     </div>
     <nav class="navbar navbar-light bg-light">
         <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#adduser"
             data-backdrop="static"> + Add Users </button>
-
         <div class="row">
             <div class="container-fluid">
                 <form class="d-flex">
@@ -33,7 +38,7 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
             <table class="table table-hover">
                 <thead>
@@ -75,6 +80,7 @@
                     @endif
                 </tbody>
             </table>
+            {{-- {!!$systenUsers->links()!!} --}}
         </div>
     </div>
 </div>

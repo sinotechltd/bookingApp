@@ -203,28 +203,8 @@
                                         @foreach ($getequipments as $equiments)
                                             <option value="{{ $equiments->id }}">{{ $equiments->equipname }}</option>
                                         @endforeach
-                                    </select>                                   
-                                    {{-- <select class="form-select equiments" name="equiments" wire:model='equiments'
-                                        value="{{ old('equiments') }}">
-
-                                        @foreach ($getequipments as $equiments)
-                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
-                                        @endforeach
-                                    </select>
-                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
-                                        value="{{ old('equiments') }}">
-
-                                        @foreach ($getequipments as $equiments)
-                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
-                                        @endforeach
-                                    </select>                                    
-                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
-                                        value="{{ old('equiments') }}">
-
-                                        @foreach ($getequipments as $equiments)
-                                            <option value="{{ $equiments->name }}">{{ $equiments->name }}</option>
-                                        @endforeach
-                                    </select> --}}
+                                    </select>                                
+                                    
                                     <div class="form-text">Select Equipment to be used</div>
                                     <div class="form-text" style="color:red">
                                         @error('equiments')

@@ -14,9 +14,11 @@
             <a class="nav-link" href="/studio">Approve</a>
           </li>
         </ul>       
-        <!-- <button class="btn btn-outline-success" type="submit">Log Out</button> -->
+        <a>
+          <p>{{ session('LoggedUserName') }}</p>
+      </a>
         <a class="btn" href="{{ route('auth.logout') }}">
-          <button type='btn btn-sm btn-danger' class>Logout</button>
+          <button type="button" class='btn btn-sm btn-danger'>Logout</button>
         </a>
       </div>
     </div>
