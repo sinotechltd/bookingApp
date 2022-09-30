@@ -197,15 +197,16 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Equipments</label>
-                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
-                                        value="{{ old('equiments') }}">
+                                    <select class="form-select equiments" name="equipments" wire:model='equipments'
+                                        value="{{ old('equipments') }}" multiple>
                                         <option>--Select Equipments --</option>
                                         @foreach ($getequipments as $equiments)
                                             <option value="{{ $equiments->id }}">{{ $equiments->equipname }}</option>
                                         @endforeach
                                     </select>                                
                                     
-                                    <div class="form-text">Select Equipment to be used</div>
+                                    <div class="form-text">Select Equipment to be used                                       
+                                    </div>
                                     <div class="form-text" style="color:red">
                                         @error('equiments')
                                             {{ $message }}

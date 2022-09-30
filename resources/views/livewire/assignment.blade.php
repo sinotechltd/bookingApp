@@ -53,7 +53,7 @@
                     <td>
                         @if (!$approvalSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -65,7 +65,7 @@
                         <label>
                             @if (!$tueApprovalSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -78,7 +78,7 @@
                         <label>
                             @if (!$wedApprovalSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -91,7 +91,7 @@
                         <label>
                             @if (!$thursApprovalSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -104,7 +104,7 @@
                         <label>
                             @if (!$friApprovalSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -116,7 +116,7 @@
                     <td>
                         @if (!$satApprovalSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -127,7 +127,7 @@
                     <td>
                         @if (!$sunApprovalSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -237,7 +237,7 @@
                     </td>
                     <td>
                         @if (!$approvalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$approvalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $approvalSuccess->id) }}" method="POST">
@@ -258,7 +258,7 @@
                                 @if (!$approvalMEname)
                                 @else
                                     <label>
-                                        {{ $approvalMEname->full_name}}
+                                        {{ $approvalMEname->full_name }}
                                     </label>
                                 @endif
 
@@ -267,7 +267,7 @@
                     </td>
                     <td>
                         @if (!$tueApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$tueApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $tueApprovalSuccess->id) }}" method="POST">
@@ -296,7 +296,7 @@
                     </td>
                     <td>
                         @if (!$wedApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$wedApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $wedApprovalSuccess->id) }}" method="POST">
@@ -326,7 +326,7 @@
                     <td>
                         {{-- djshd --}}
                         @if (!$thursApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$thursApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $thursApprovalSuccess->id) }}" method="POST">
@@ -355,7 +355,7 @@
                     </td>
                     <td>
                         @if (!$friApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$friApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $friApprovalSuccess->id) }}" method="POST">
@@ -384,7 +384,7 @@
                     </td>
                     <td>
                         @if (!$satApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$satApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $satApprovalSuccess->id) }}" method="POST">
@@ -414,7 +414,7 @@
                     </td>
                     <td>
                         @if (!$sunApprovalSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$sunApprovalSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $sunApprovalSuccess->id) }}" method="POST">
@@ -457,7 +457,7 @@
                     <td>
                         @if (!$approvalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -469,7 +469,7 @@
                         <label>
                             @if (!$tueApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -482,7 +482,7 @@
                         <label>
                             @if (!$wedApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -495,7 +495,7 @@
                         <label>
                             @if (!$thursApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -508,7 +508,7 @@
                         <label>
                             @if (!$friApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -520,7 +520,8 @@
                     <td>
                         @if (!$satApprovalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
+
                             </label>
                         @else
                             <label>
@@ -531,7 +532,7 @@
                     <td>
                         @if (!$sunApprovalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -641,7 +642,7 @@
                     </td>
                     <td>
                         @if (!$approvalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$approvalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $approvalBSuccess->id) }}" method="POST">
@@ -654,7 +655,7 @@
                                         @endforeach
                                     </select>
                                     <a class="btn-group" role="group"
-                                        href="{{ url('/assignMonA', $approvalSuccess->id) }}">
+                                        href="{{ url('/assignMonA', $approvalBSuccess->id) }}">
                                         <button type="submit" class="btn btn-sm btn-success">Assign</button>
                                     </a>
                                 </form>
@@ -671,7 +672,7 @@
                     </td>
                     <td>
                         @if (!$tueApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$tueApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $tueApprovalBSuccess->id) }}" method="POST">
@@ -700,7 +701,7 @@
                     </td>
                     <td>
                         @if (!$wedApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$wedApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $wedApprovalBSuccess->id) }}" method="POST">
@@ -730,7 +731,7 @@
                     <td>
                         {{-- djshd --}}
                         @if (!$thursApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$thursApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $thursApprovalBSuccess->id) }}" method="POST">
@@ -759,7 +760,7 @@
                     </td>
                     <td>
                         @if (!$friApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$friApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $friApprovalBSuccess->id) }}" method="POST">
@@ -788,7 +789,7 @@
                     </td>
                     <td>
                         @if (!$satApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$satApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $satApprovalBSuccess->id) }}" method="POST">
@@ -817,7 +818,7 @@
                     </td>
                     <td>
                         @if (!$sunApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$sunApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $sunApprovalBSuccess->id) }}" method="POST">
@@ -860,7 +861,7 @@
                     <td>
                         @if (!$approvalCSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -872,7 +873,7 @@
                         <label>
                             @if (!$tueApprovalCSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -885,7 +886,7 @@
                         <label>
                             @if (!$wedApprovalCSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -898,7 +899,7 @@
                         <label>
                             @if (!$thursApprovalCSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -911,7 +912,7 @@
                         <label>
                             @if (!$friApprovalCSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -923,7 +924,7 @@
                     <td>
                         @if (!$satApprovalCSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -934,7 +935,7 @@
                     <td>
                         @if (!$sunApprovalCSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -1044,7 +1045,7 @@
                     </td>
                     <td>
                         @if (!$approvalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$approvalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $approvalCSuccess->id) }}" method="POST">
@@ -1074,7 +1075,7 @@
                     </td>
                     <td>
                         @if (!$tueApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$tueApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $tueApprovalCSuccess->id) }}" method="POST">
@@ -1103,7 +1104,7 @@
                     </td>
                     <td>
                         @if (!$wedApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$wedApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $wedApprovalCSuccess->id) }}" method="POST">
@@ -1133,7 +1134,7 @@
                     <td>
                         {{-- djshd --}}
                         @if (!$thursApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$thursApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $thursApprovalCSuccess->id) }}" method="POST">
@@ -1162,7 +1163,7 @@
                     </td>
                     <td>
                         @if (!$friApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$friApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $friApprovalCSuccess->id) }}" method="POST">
@@ -1191,7 +1192,7 @@
                     </td>
                     <td>
                         @if (!$satApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$satApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $satApprovalCSuccess->id) }}" method="POST">
@@ -1221,7 +1222,7 @@
                     </td>
                     <td>
                         @if (!$sunApprovalCSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$sunApprovalCSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $sunApprovalCSuccess->id) }}" method="POST">
@@ -1265,7 +1266,7 @@
                     <td>
                         @if (!$EapprovalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -1277,7 +1278,7 @@
                         <label>
                             @if (!$EtueApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -1290,7 +1291,7 @@
                         <label>
                             @if (!$EwedApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -1303,7 +1304,7 @@
                         <label>
                             @if (!$EthursApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -1316,7 +1317,7 @@
                         <label>
                             @if (!$EfriApprovalBSuccess)
                                 <label>
-                                    <button class="btn btn-sm btn-primary">Not Booked</button>
+                                    <span class="badge bg-secondary">Not Booked</span>
                                 </label>
                             @else
                                 <label>
@@ -1328,7 +1329,7 @@
                     <td>
                         @if (!$EsatApprovalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -1339,7 +1340,7 @@
                     <td>
                         @if (!$EsunApprovalBSuccess)
                             <label>
-                                <button class="btn btn-sm btn-primary">Not Booked</button>
+                                <span class="badge bg-secondary">Not Booked</span>
                             </label>
                         @else
                             <label>
@@ -1449,7 +1450,7 @@
                     </td>
                     <td>
                         @if (!$EapprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EapprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EapprovalBSuccess->id) }}" method="POST">
@@ -1479,7 +1480,7 @@
                     </td>
                     <td>
                         @if (!$EtueApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EtueApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EtueApprovalBSuccess->id) }}" method="POST">
@@ -1508,7 +1509,7 @@
                     </td>
                     <td>
                         @if (!$EwedApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EwedApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EwedApprovalBSuccess->id) }}" method="POST">
@@ -1538,7 +1539,7 @@
                     <td>
                         {{-- djshd --}}
                         @if (!$EthursApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EthursApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EthursApprovalBSuccess->id) }}" method="POST">
@@ -1567,7 +1568,7 @@
                     </td>
                     <td>
                         @if (!$EfriApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EfriApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EfriApprovalBSuccess->id) }}" method="POST">
@@ -1596,7 +1597,7 @@
                     </td>
                     <td>
                         @if (!$EsatApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EsatApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EsatApprovalBSuccess->id) }}" method="POST">
@@ -1626,7 +1627,7 @@
                     </td>
                     <td>
                         @if (!$EsunApprovalBSuccess)
-                            <p>-not booked-</p> 
+                            <p>-not booked-</p>
                         @else
                             @if (!$EsunApprovalBSuccess->editor_id)
                                 <form action="{{ route('assignmoa', $EsunApprovalBSuccess->id) }}" method="POST">

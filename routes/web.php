@@ -2,7 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MainController;
+use App\Http\Livewire\AdminAddEmployee;
+use App\Http\Livewire\AdminAddInventory;
 use App\Http\Livewire\AdminAddPromme;
+use App\Http\Livewire\AdminAddSuits;
 use App\Http\Livewire\AdminConsole;
 use App\Http\Livewire\Assignment;
 use App\Http\Livewire\BookingComponent;
@@ -60,7 +63,6 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/auth/login', [MainController::class, 'login'])->name('auth.login');
   Route::get('/auth/register', [MainController::class, 'register'])->name('auth.login');
   //New routes with livewire    
-
   Route::get('/', ClientBookingPage::class);
   Route::get('/editing', ClientEditingFacility::class);
   Route::get('/equipments', ClientEquipments::class);
@@ -71,7 +73,18 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/admin', AdminConsole::class);
   Route::get('/listprograms',AdminAddPromme::class);
   Route::post('/addprogram',[AdminAddPromme::class,'submitprogramdetails']);
+  Route::get('/listemployees',AdminAddEmployee::class);
   Route::get('/admin/delete/{id}',[AdminAddPromme::class,'delete']);
+  Route::post('/addemployee',[AdminAddEmployee::class,'submitprogramdetails']);
+  Route::get('/admin/employee/delete/{id}',[AdminAddEmployee::class,'delete']); 
+
+  Route::get('/listinventories',AdminAddInventory::class);
+  Route::post('/addinventory',[AdminAddInventory::class,'submitprogramdetails']);
+  Route::get('/admin/inventory/delete/{id}',[AdminAddInventory::class,'delete']); 
+
+ Route::get('/listsuits',AdminAddSuits::class);
+  Route::post('/addsuits',[AdminAddSuits::class,'submitprogramdetails']);
+  Route::get('/admin/suits/delete/{id}',[AdminAddSuits::class,'delete']); 
   //HONroutes
   Route::get('hon', HONApproval::class);
   Route::get('approved', HONApproved::class);
@@ -89,15 +102,12 @@ Route::group(['middleware' => ['AutCheck']], function () {
   //reject    
   Route::get('/rviewline/{id}', [HonconfirmReject::class, 'veiwline']);
   Route::post('/rejectline', [HonconfirmReject::class, 'rejectline']);
-
   //editing facilities approve 
   Route::get('/vieweditLin/{id}', [HonApproveEditView::class, 'veiwline']);
   Route::post('/approveditline', [HonApproveEditView::class, 'aproveline']);
   //editing facilities reject    
   Route::get('/vieweditline/{id}', [HonRejectEditView::class, 'veiwline']);
   Route::post('/rejecteditline', [HonRejectEditView::class, 'rejectline']);
-
-
   //editing facilities tpm approve 
   Route::get('/tpmvieweditLin/{id}', [TpmApproveEditView::class, 'veiwline']);
   Route::post('/tpmapproveditline', [TpmApproveEditView::class, 'aproveline']);
@@ -110,7 +120,6 @@ Route::group(['middleware' => ['AutCheck']], function () {
   //editing production tpmreject    
   Route::get('/productionlineViewr/{id}', [TpmRejectProdView::class, 'veiwline']);
   Route::post('/prodrejectline', [TpmRejectProdView::class, 'rejectline']);
-
   //editing facilities csto approve 
   Route::get('/cstoapprovelineview/{id}', [CstoApproveEditView::class, 'veiwline']);
   Route::post('/cstoapproveditline', [CstoApproveEditView::class, 'aproveline']);
@@ -118,15 +127,12 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/cstorejectlineview/{id}', [CstorejectEditView::class, 'veiwline']);
   Route::post('/cstorejecteditline', [CstorejectEditView::class, 'rejectline']);
 
-
   //editing production csto approve 
   Route::get('/cstoapprovelinePview/{id}', [CstoApproveProdView::class, 'veiwline']);
   Route::post('/cstoapproveproduct', [CstoApproveProdView::class, 'aproveline']);
   //editing production csto reject    
   Route::get('/ctorejectlineview/{id}', [CstorejectProdView::class, 'veiwline']);
   Route::post('/ctorejectlineview', [CstorejectProdView::class, 'rejectline']);
-
-
   //eding facilities booking
   Route::get('/fapproveline/{id}', [MainController::class, 'faproveline']);
   Route::get('/frejectline/{id}', [MainController::class, 'frejectline']);

@@ -89,35 +89,16 @@
                     </div>
                 </div>
             </div>
-            <div class="row align-items-start">
+            <div class="row align-items-start">                
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
+                        {{-- @foreach ($itemName as $item)
+                            <div class="form-control producer" name="producer" aria-label="Default select example"
+                                wire:model='producer'>
+                                {{ $item->equipname }}
+                            </div>
+                        @endforeach --}}
                     </div>
                 </div>
                 <div class="row align-items-start">
@@ -193,7 +174,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous()  }}">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
 
                 </a>
             </div>
