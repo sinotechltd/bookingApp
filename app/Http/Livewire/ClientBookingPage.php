@@ -12,9 +12,8 @@ use DateTime;
 
 class ClientBookingPage extends Component
 {
-    public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $equiments, $presenters, $remarks, $booking_id_edit;
-    public $selected = '';
-
+    public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $presenters, $remarks, $booking_id_edit;
+    public $equipments = [];
 
     public function submibookingdetails()
     {
@@ -34,13 +33,14 @@ class ClientBookingPage extends Component
             'location' => 'required',
             'designer' => 'required',
             'guests' => 'required',
-            'equiments' => 'required',
+            'equipments' => 'required',
             'presenters' => 'required',
         ]);
+        $serializedArr = serialize($this->equipments);
 
         //add valid records todatabase
         $book = new Master_booking();
-        $book->items_booked = $this->equiments;
+        $book->items_booked = $serializedArr;
         $book->date_booked = $this->bookingdate;
         $book->program_title = $this->ptitle;
         $book->program_topic = $this->program_topic;
@@ -68,11 +68,10 @@ class ClientBookingPage extends Component
         $getProgramTitle = ProgramsTable::all();
         $userBooking = Master_booking::where('user_id', '=', session('LoggedUser'))->get();
         $employes = EmployeeTable::all();
-        $getproducer =EmployeeTable::where('duties', '=','Producer')->get();
-        $getPresenters =EmployeeTable::where('duties', '=','Presenters')->get();
+        $getproducer = EmployeeTable::where('duties', '=', 'Producer')->get();
+        $getPresenters = EmployeeTable::where('duties', '=', 'Presenters')->get();
         $getequipments = Inventory::all();
 
-        return view('livewire.client-booking-page', ['userBooking' => $userBooking],compact('getProgramTitle','employes','getproducer','getequipments','getPresenters'))->layout('livewire.layouts.client');
-       
+        return view('livewire.client-booking-page', ['userBooking' => $userBooking], compact('getProgramTitle', 'employes', 'getproducer', 'getequipments', 'getPresenters'))->layout('livewire.layouts.client');
     }
 }
