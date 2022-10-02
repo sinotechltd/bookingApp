@@ -36,7 +36,7 @@ class ClientBookingPage extends Component
             'equipments' => 'required',
             'presenters' => 'required',
         ]);
-        $serializedArr = serialize($this->equipments);
+         $serializedArr = serialize($this->equipments);
 
         //add valid records todatabase
         $book = new Master_booking();
@@ -56,6 +56,7 @@ class ClientBookingPage extends Component
         $book->operation_crew = $this->operation_crew;
         $book->shift_leader = $this->team_leader;
         $book->user_id = $session_id;
+       // $book->mInventory()->attach($this->equipments);
         $book->save();
 
         session()->flash('message', 'You have succesfully booked production');

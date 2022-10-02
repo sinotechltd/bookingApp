@@ -11,7 +11,8 @@ use Livewire\Component;
 
 class ClientEditingFacility extends Component
 {
-    public $ptitle, $program_topic, $producer, $esuit, $editing_date, $start_time, $end_time, $equiments,  $remarks;
+    public $ptitle, $program_topic, $producer, $esuit, $editing_date, $start_time, $end_time, $remarks;
+    public $equiments;
     public function submibookingdetails()
     {
         $session_id = session('LoggedUser');       
@@ -59,8 +60,8 @@ class ClientEditingFacility extends Component
         ->join('suits','editing_facs.suitID','suits.id')
         ->join('users','editing_facs.user_id','users.id')
         ->join('programs_tables','editing_facs.program_title','programs_tables.id')
-        ->join('inventories','editing_facs.producer','inventories.id')
-        ->join('employee_tables','editing_facs.requirements','employee_tables.id')
+        ->join('inventories','editing_facs.requirements','inventories.id')
+        ->join('employee_tables','editing_facs.producer','employee_tables.id')
         ->get();
         $getequipments = Inventory::all();
         $geteSuits = Suits::all();

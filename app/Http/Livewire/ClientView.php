@@ -16,12 +16,21 @@ class ClientView extends Component
             //->join('inventories', 'master_bookings.items_booked', 'inventories.id')
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->first();
-        $itemName = unserialize($record->items_booked);
-        //unserialize database data the search fro records with the same records.
+        $itemname = Master_booking::select('master_bookings.items_booked')->where('master_bookings.id', '=', $id);
+        //unserialize database data \
+        //$itemname = $itemnameC->attributesToArray();
+        $itemNameUnserial = unserialize($record->items_booked);
+        $itemNameUnserialed = $itemNameUnserial->toArray();
 
+        //then search fro records with the same records.
+        $itemName = Inventory::where(function ($query) use ($itemNameUnserialed) {
+            foreach ($itemNameUnserialed as $item) {
+                $query->where('id', '=', $item);
+            }})->get();
+        //dd($results);
         //$itemName = Inventory::select('equipname')->where('id',"implode(',',$itemnameArray)")->get();
 
-        return view('livewire.client-view', compact('record','itemName'));
+        return view('livewire.client-view', compact('record', 'itemName'));
     }
     public function render()
     {

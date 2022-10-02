@@ -128,7 +128,7 @@
                             <div class="col">
                                 <div class="mb-3">
                                     <label class="form-label">Other Requipments</label>
-                                    <select class="form-select equiments" name="equiments" wire:model='equiments'
+                                    <select class="form-select selectpicker" multiple data-live-search="true" name="equiments[]" wire:model='equiments[]'
                                         value="{{ old('equiments') }}">
                                         <option>--Select Editing suit--</option>
                                         @foreach ($getequipments as $equiments)

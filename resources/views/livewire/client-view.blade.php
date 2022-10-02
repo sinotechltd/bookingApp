@@ -93,12 +93,11 @@
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Items booked</label>
-                        {{-- @foreach ($itemName as $item)
-                            <div class="form-control producer" name="producer" aria-label="Default select example"
-                                wire:model='producer'>
+                        @foreach ($itemName as $item)
+                            <div class="form-control producer" name="producer" aria-label="Default select example">
                                 {{ $item->equipname }}
                             </div>
-                        @endforeach --}}
+                        @endforeach
                     </div>
                 </div>
                 <div class="row align-items-start">
