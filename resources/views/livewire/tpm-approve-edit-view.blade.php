@@ -130,11 +130,12 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn-group" role="group" href="{{ url('/tpmapproveditline', $record->id) }}">
-                    <button type="submit" class="btn btn-sm btn-primary">Approve</button>
-                </a>
+               
             </div>
             <div class="modal-footer">
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-sm btn-success ">Approve</button>
+                </div>
                 <a class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
 
                 </a>
