@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire;
 
+use App\Models\Inventory;
 use App\Models\Master_booking;
 use Livewire\Component;
 use Illuminate\Http\Request;
@@ -10,13 +11,24 @@ class HonconfirmApprove extends Component
 {
     public function veiwline(int $id)
     {
-        $record = Master_booking::select('master_bookings.*', 'users.name', 'programs_tables.program_name', 'inventories.equipname')
+        $record = Master_booking::select('master_bookings.*', 'users.name', 'programs_tables.program_name')
             ->where('master_bookings.id', $id)
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->join('programs_tables', 'master_bookings.program_title', 'programs_tables.id')
-            ->join('inventories', 'master_bookings.items_booked', 'inventories.id')
+            //->join('inventories', 'master_bookings.items_booked', 'inventories.id')
             ->first();
-        return view('livewire.honconfirm-approve', compact('record'));
+            $itemname = Master_booking::select('master_bookings.items_booked')->where('master_bookings.id', '=', $id);
+            //unserialize database data \
+            //$itemname = $itemnameC->attributesToArray();
+            $itemNameUnserial = unserialize($record->items_booked);
+           // $itemNameUnserialed = $itemNameUnserial->toArray();
+    
+            //then search fro records with the same records.
+            $itemName = Inventory::where(function ($query) use ($itemNameUnserial) {
+                foreach ($itemNameUnserial as $item) {
+                    $query->where('id', '=', $item);
+                }})->get();
+        return view('livewire.honconfirm-approve', compact('record','itemName'));
     }
     public function aproveline(Request $request)
     {

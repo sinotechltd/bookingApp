@@ -69,8 +69,8 @@ class ClientBookingPage extends Component
         $getProgramTitle = ProgramsTable::all();
         $userBooking = Master_booking::where('user_id', '=', session('LoggedUser'))->get();
         $employes = EmployeeTable::all();
-        $getproducer = EmployeeTable::where('duties', '=', 'Producer')->get();
-        $getPresenters = EmployeeTable::where('duties', '=', 'Presenters')->get();
+        $getproducer = EmployeeTable::all();
+        $getPresenters = EmployeeTable::all();
         $getequipments = Inventory::all();
 
         return view('livewire.client-booking-page', ['userBooking' => $userBooking], compact('getProgramTitle', 'employes', 'getproducer', 'getequipments', 'getPresenters'))->layout('livewire.layouts.client');

@@ -1,5 +1,13 @@
 <div class="container-fluid">
-    <hr>
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link"href="/csto">Approval</a>
+        </li>
+              <li class="nav-item">
+            <a class="nav-link active"  aria-current="page" href="/assign">Assign</a>
+        </li>                       
+    </ul>
+{{-- <hr> --}}
     <h5 style="text-align: center">Assign respective personel duties</h5>
 
     <div class="container">

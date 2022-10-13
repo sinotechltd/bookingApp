@@ -73,23 +73,15 @@
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
+                        @foreach ($itemName as $item)
+                        <div class="form-control producer" name="producer" aria-label="Default select example">
+                            {{ $item->equipname }}
                         </div>
-
+                    @endforeach
                     </div>
                 </div>
                 <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Editing Date</label>
-                        <div type="text" name="operation_crew" class="form-control operation_crew">
-                            {{ $record->editing_date }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
+                    <div class="mb-3">items_booked
                         <label class="form-label">Start Time</label>
                         <div type="date" name="bookingdate" class="form-control bookingdate">
                             {{ $record->start_time }}
