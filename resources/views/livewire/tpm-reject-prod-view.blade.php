@@ -144,9 +144,9 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label">Remarks</label>
-                                <textarea class="form-control">
+                                <p class="form-control">
                             {{ $record->remarks }}
-                        </textarea>
+                        </p>
                             </div>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
 
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Approval comments</label>
+                            <label class="form-label">Reject Reason</label>
                             <textarea name="comments" wire:model='comments' class="form-control" placeholder="Write your comments here..."></textarea>
                             <div class="form-text" style="color:red">
                                 @error('comments')
@@ -163,19 +163,17 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    {{-- <a class="btn-group" role="group" href="{{ url('/approveline', $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-primary">Approve</button>
-                    </a> --}}
-                    <a class="btn-group" role="group" href="{{ url('/prodrejectline', $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                    </a>
+                    </div>                  
+                   
 
                 </div>
                 <div class="modal-footer">
-                    <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
+                    <div class="btn-group" role="group">
+                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                    </div>
+                    <div class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
 
-                    </a>
+                    </div>
                 </div>
 
             </div>

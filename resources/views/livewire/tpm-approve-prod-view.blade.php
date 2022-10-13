@@ -144,9 +144,9 @@
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Remarks</label>
-                            <textarea  class="form-control">
+                            <p  class="form-control">
                             {{ $record->remarks }}
-                        </textarea>
+                        </p>
                         </div>
                     </div>
                 </div>
@@ -164,16 +164,17 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn-group" role="group" href="{{ url('/productionlineApprove', $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-primary">Approve</button>
-                    </a>                   
+                                      
                
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
+                <div class="btn-group" role="group">
+                    <button type="submit" class="btn btn-sm btn-success ">Approve</button>
+                </div> 
+                <div class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
 
-                </a>
-            </div>
+                </div>
+            </div>  
 
         </div>
     </form>
