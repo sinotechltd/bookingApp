@@ -12,10 +12,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/assign">Assign</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/assign">Assign</a>
-                        </li>
+                        </li>                       
                     </ul>
                 </div>
                 @include('logout')

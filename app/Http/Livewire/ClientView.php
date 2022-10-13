@@ -20,11 +20,11 @@ class ClientView extends Component
         //unserialize database data \
         //$itemname = $itemnameC->attributesToArray();
         $itemNameUnserial = unserialize($record->items_booked);
-        $itemNameUnserialed = $itemNameUnserial->toArray();
+       // $itemNameUnserialed = $itemNameUnserial->toArray();
 
         //then search fro records with the same records.
-        $itemName = Inventory::where(function ($query) use ($itemNameUnserialed) {
-            foreach ($itemNameUnserialed as $item) {
+        $itemName = Inventory::where(function ($query) use ($itemNameUnserial) {
+            foreach ($itemNameUnserial as $item) {
                 $query->where('id', '=', $item);
             }})->get();
         //dd($results);

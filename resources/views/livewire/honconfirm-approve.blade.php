@@ -47,112 +47,92 @@
         </div>
         <h5 class="modal-title">Booking information</h5>
         <form wire:submit.prevent='aproveline' action="/approveline" method="post">
-        <div class="modal-body">
-            @csrf
-            <div class="row align-items-start">
-                <div class="col">
-                    <div class="mb-3">
-                        <label for="" class="form-label">Booking Reference</label>
-                        <input name="recordid" wire:model='recordid' class="form-control"
-                          value="{{ $record->id }}">                    
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Program</label>
-                        <div class="form-select" name="team_leader">
-                            {{ $record->program_name }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Topic</label>
-                        <div class="form-select" name="team_leader">
-                            {{ $record->program_topic }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">User</label>
-                        <div type="text" name="program_topic" class="form-control program_topic">
-                            {{ $record->name }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-start">
-
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Booked Date</label>
-                        <div type="text" name="operation_crew" class="form-control operation_crew">
-                            {{ $record->date_booked }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Recording Time</label>
-                        <div type="date" name="bookingdate" class="form-control bookingdate">
-                            {{ $record->recording_time }}
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Location</label>
-                        <div type="time" name="settingtime" class="form-control settingtime">
-                            {{ $record->location }}
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="row align-items-start">
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="mb-3">
-                        <label class="form-label">Items booked</label>
-                        <div class="form-control producer" name="producer" aria-label="Default select example"
-                            wire:model='producer'>
-                            {{ $record->equipname }}
-                        </div>
-
-                    </div>
-                </div>
+            <div class="modal-body">
+                @csrf
                 <div class="row align-items-start">
                     <div class="col">
                         <div class="mb-3">
-                            <label class="form-label">Remarks</label>
-                            <textarea  class="form-control">
-                            {{ $record->remarks }}
-                        </textarea>
+                            <label for="" class="form-label">Booking Reference</label>
+                            <input name="recordid" wire:model='recordid' class="form-control"
+                                value="{{ $record->id }}">
+
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Program</label>
+                            <div class="form-select" name="team_leader">
+                                {{ $record->program_name }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Topic</label>
+                            <div class="form-select" name="team_leader">
+                                {{ $record->program_topic }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">User</label>
+                            <div type="text" name="program_topic" class="form-control program_topic">
+                                {{ $record->name }}
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="row align-items-start">
-               
+                <div class="row align-items-start">
+
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Booked Date</label>
+                            <div type="text" name="operation_crew" class="form-control operation_crew">
+                                {{ $record->date_booked }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Recording Time</label>
+                            <div type="date" name="bookingdate" class="form-control bookingdate">
+                                {{ $record->recording_time }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Location</label>
+                            <div type="time" name="settingtime" class="form-control settingtime">
+                                {{ $record->location }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-start">
+
+                    @foreach ($itemName as $item)
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Items booked</label>
+                                <div class="form-control producer" name="producer" aria-label="Default select example">
+                                    {{ $item->equipname }}
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                    <div class="row align-items-start">
+                        <div class="col">
+                            <div class="mb-3">
+                                <label class="form-label">Remarks</label>
+                                <textarea class="form-control">
+                            {{ $record->remarks }} </textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-start">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Approval comments</label>
@@ -164,22 +144,19 @@
                             </div>
                         </div>
                     </div>
-                    <a class="btn-group" role="group" href="{{ url('/approveline', $record->id) }}">
+                </div>
+
+                <div class="modal-footer">
+                    <a class="btn-group" role="group" {{-- href="{{ url('/approveline', $record->id) }}" --}}>
                         <button type="submit" class="btn btn-sm btn-primary">Approve</button>
                     </a>
-                    {{-- <a class="btn-group" role="group" href="{{ url('/rejectline',  $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                    </a> --}}
-               
-            </div>
-            <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
 
-                </a>
-            </div>
+                    <a class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
 
-        </div>
-    </form>
+                    </a>
+                </div>
+            </div>
+        </form>
     </div>
 
 

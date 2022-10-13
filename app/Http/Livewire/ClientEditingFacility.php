@@ -12,7 +12,7 @@ use Livewire\Component;
 class ClientEditingFacility extends Component
 {
     public $ptitle, $program_topic, $producer, $esuit, $editing_date, $start_time, $end_time, $remarks;
-    public $equiments;
+    public $equiments =[];
     public function submibookingdetails()
     {
         $session_id = session('LoggedUser');       
@@ -27,7 +27,7 @@ class ClientEditingFacility extends Component
             'end_time' => 'required',
             'equiments' => 'required',
         ]);
-
+        $serializedArr = serialize($this->equiments);
         //add valid records todatabase
         $book = new EditingFac();
         $book->suitID = $this->esuit;
@@ -35,7 +35,7 @@ class ClientEditingFacility extends Component
         $book-> program_topic = $this->program_topic;
         $book-> producer = $this->producer;
         $book-> booking_date = now();
-        $book-> requirements = $this->equiments;
+        $book-> requirements = $serializedArr;
         $book-> editing_date = $this->editing_date;
         $book-> start_time = $this->start_time;
         $book-> endtime_time = $this->end_time;
@@ -60,7 +60,7 @@ class ClientEditingFacility extends Component
         ->join('suits','editing_facs.suitID','suits.id')
         ->join('users','editing_facs.user_id','users.id')
         ->join('programs_tables','editing_facs.program_title','programs_tables.id')
-        ->join('inventories','editing_facs.requirements','inventories.id')
+        //->join('inventories','editing_facs.requirements','inventories.id')
         ->join('employee_tables','editing_facs.producer','employee_tables.id')
         ->get();
         $getequipments = Inventory::all();

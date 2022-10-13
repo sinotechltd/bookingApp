@@ -56,6 +56,7 @@
                             <label for="" class="form-label">Booking Reference</label>
                             <input name="recordid" wire:model='recordid' class="form-control"
                                 value="{{ $record->id }}">
+                            
                         </div>
                     </div>
                     <div class="col">
