@@ -15,11 +15,11 @@ class HONRejected extends Component
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('suits', 'editing_facs.suitID', 'suits.id')
             ->get();
-        $userApprovalSuccess = Master_booking::select('master_bookings.*', 'programs_tables.program_name', 'inventories.equipname', 'users.name')
+        $userApprovalSuccess = Master_booking::select('master_bookings.*', 'programs_tables.program_name', 'users.name')
             ->where('approver1_id', '=', session('LoggedUser'))->where('approval_level1', '=', 'Rejected')
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->join('programs_tables', 'master_bookings.program_title', 'programs_tables.id')
-            ->join('inventories', 'master_bookings.items_booked', 'inventories.id')
+            //->join('inventories', 'master_bookings.items_booked', 'inventories.id')
             ->get();
 
         return view('livewire.h-o-n-rejected', ['userApproval' => $userApprovalSuccess], ['userBooking' => $userBookings])->layout('livewire.layouts.client');

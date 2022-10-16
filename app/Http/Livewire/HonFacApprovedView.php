@@ -13,10 +13,10 @@ class HonFacApprovedView extends Component
     //public $record;
     public function viewRecord($id)
     {
-        $record = Master_booking::select('master_bookings.*','programs_tables.program_name','inventories.equipname')
+        $record = Master_booking::select('master_bookings.*','programs_tables.program_name')
         ->where('master_bookings.id','=',$id)
         ->join('programs_tables','master_bookings.program_title','programs_tables.id')
-        ->join('inventories','master_bookings.items_booked','inventories.id')
+       // ->join('inventories','master_bookings.items_booked','inventories.id')
         ->first();
         $recordname = Master_booking::select('master_bookings.user_id','users.name')
         ->where('master_bookings.id','=',$id)

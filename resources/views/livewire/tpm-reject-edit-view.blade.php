@@ -138,7 +138,7 @@
                 <a class="btn-group" role="group">
                     <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                 </a>
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="/tpm">Close
 
                 </a>
             </div>

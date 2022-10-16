@@ -131,14 +131,13 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn-group" role="group" href="{{ url('/cstorejecteditline', $record->id) }}">
-                    <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                </a>
+               
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
-
+                <a class="btn-group" role="group" href="{{ url('/cstorejecteditline', $record->id) }}" style="text-decoration: none">
+                    <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                 </a>
+                <a class="btn-group btn-sm btn-primary" role="group" href="/csto" style="text-decoration: none">Close</a>
             </div>
 
     </div>

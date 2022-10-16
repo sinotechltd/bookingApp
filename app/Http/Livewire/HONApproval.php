@@ -11,6 +11,7 @@ class HONApproval extends Component
 {
     public $ptitle, $program_topic, $team_leader, $producer, $operation_crew, $bookingdate, $recordingtime, $settingtime, $rehearsal_time, $location, $designer, $guests, $equiments, $presenters, $remarks, $bookin_id;
     public $comments, $reject_bookingId;
+    public $title= "HON Approval";
 
 
     public function rejectReason($id)
@@ -39,12 +40,12 @@ class HONApproval extends Component
             ->where('approval_level1', '=', 'Pending')
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->get();
-        $userBookings = EditingFac::select('editing_facs.*', 'suits.suitName', 'users.name', 'programs_tables.program_name', 'inventories.equipname')
+        $userBookings = EditingFac::select('editing_facs.*', 'suits.suitName', 'users.name', 'programs_tables.program_name')
             ->where('approval_level1', '=', 'Pending')
             ->join('suits', 'editing_facs.suitID', 'suits.id')
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('programs_tables', 'editing_facs.program_title', 'programs_tables.id')
-            ->join('inventories', 'editing_facs.requirements', 'inventories.id')
+            //->join('inventories', 'editing_facs.requirements', 'inventories.id')
             ->get();
         return view('livewire.h-o-n-approval', ['userBoking' => $userBoking], ['userBooking' => $userBookings])->layout('livewire.layouts.base');
     }

@@ -131,14 +131,13 @@
                         </div>
                     </div>
                 </div>
-                <a class="btn-group" role="group" href="{{ url('/rejecteditline', $record->id) }}">
-                    <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                </a>
+               
             </div>
-            <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
-
-                </a>
+            <div class="modal-footer" style="text-decoration: none">
+                <div class="btn-group" role="group" href="{{ url('/rejecteditline', $record->id) }}">
+                    <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                </div>
+                <a class="btn-group btn-sm btn-primary" role="group" href="/hon"style="text-decoration: none">Close</a>
             </div>
 
     </div>

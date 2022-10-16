@@ -5,6 +5,9 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
+                            <a class="btn btn-outline-primary" href="/csto"><- Back</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link active"aria-current="page" href="/admin">Manage Users</a>
                         </li>
                         <li class="nav-item">
@@ -66,8 +69,8 @@
                                     <div class="btn-group" role="group">
                                         <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
                                             data-bs-target="#deleteentry">Delete</button>
-                                        <button type="button" class="btn btn-sm btn-primary"
-                                            wire:click='editbookingentry({{ $user->id }} )'>Edit</button>
+                                        {{-- <button type="button" class="btn btn-sm btn-primary"
+                                            wire:click='editbookingentry({{ $user->id }} )'>Edit</button> --}}
                                     </div>
                                 </td>
                             </tr>

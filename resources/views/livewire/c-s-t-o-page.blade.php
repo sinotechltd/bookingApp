@@ -1,3 +1,4 @@
+<title>{{$title}}</title>
 <div class="container-fluid">
     <div class="div">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -11,8 +12,14 @@
                             <a class="nav-link" href="/">Booking</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/assign">Assign</a>
-                        </li>                       
+                            <a class="nav-link" href="/preport">Producting Report</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/assign">Assign </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">Admin Panel </a>
+                        </li>
                     </ul>
                 </div>
                 @include('logout')
@@ -67,12 +74,22 @@
                             <td>{{ $booking->name }}</td>
                             <td>{{ $booking->recording_time }}</td>
                             <td>{{ $booking->shift_leader }}</td>
-                            <td>{{ $booking->approval_level3 }}</td>
                             <td>
-                                <a class="btn-group" role="group" href="{{ url('/cstoapprovelinePview', $booking->id) }}">
+                                @if ($booking->approval_level3 == 'Pending')
+                                    <span class="badge bg-secondary">Awaiting your approval</span>
+                                @elseif ($booking->approval_level3 == 'Approved')
+                                    <span class="badge bg-success">Approved</span>
+                                @elseif($booking->approval_level3 == 'Rejected')
+                                    <span class="badge bg-danger">Rejected</span>
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn-group" role="group"
+                                    href="{{ url('/cstoapprovelinePview', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-primary">Approve</button>
                                 </a>
-                                <a class="btn-group" role="group" href="{{ url('/ctorejectlineview', $booking->id) }}">
+                                <a class="btn-group" role="group"
+                                    href="{{ url('/ctorejectlineview', $booking->id) }}">
                                     <button type="button" class="btn btn-sm btn-danger">Reject</button>
                                 </a>
                             </td>
@@ -99,7 +116,7 @@
             <tr>
                 <th scope="col">Ref</th>
                 <th scope="col">Suit</th>
-                <th scope="col">User</th>               
+                <th scope="col">User</th>
                 <th scope="col">Editing Date</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
@@ -128,7 +145,8 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn-group" role="group" href="{{ url('/cstoapprovelineview', $fbooking->id) }}">
+                            <a class="btn-group" role="group"
+                                href="{{ url('/cstoapprovelineview', $fbooking->id) }}">
                                 <button type="button" class="btn btn-sm btn-primary">Approve</button>
                             </a>
                             <a class="btn-group" role="group" href="{{ url('/cstorejectlineview', $fbooking->id) }}">

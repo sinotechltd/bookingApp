@@ -103,10 +103,9 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <div class="btn-group" role="group">
+                                    <div class="btn-group" role="group" style="text-decoration: none">
                                         <a class="btn-group btn-sm btn-primary" role="group"
-                                            href="{{ url('fclientview', $booking->id) }}">View
-
+                                            href="{{ url('fclientview', $booking->id) }}" style="text-decoration: none">View
                                         </a>
                                     </div>
                                 </td>

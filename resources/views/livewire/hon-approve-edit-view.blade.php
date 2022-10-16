@@ -137,9 +137,9 @@
                 <div class="btn-group" role="group">
                     <button type="submit" class="btn btn-sm btn-success">Approve</button>
                 </div>
-                <div class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
 
-                </div>
+                </a>
             </div>
 
     </div>

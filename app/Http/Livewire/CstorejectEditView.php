@@ -10,11 +10,11 @@ class CstorejectEditView extends Component
 {
     public function veiwline(int $id)
     {
-        $record = EditingFac::select('editing_facs.*', 'users.name', 'programs_tables.program_name', 'inventories.equipname', 'suits.suitName')
+        $record = EditingFac::select('editing_facs.*', 'users.name', 'programs_tables.program_name','suits.suitName')
             ->where('editing_facs.id', $id)
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('programs_tables', 'editing_facs.program_title', 'programs_tables.id')
-            ->join('inventories', 'editing_facs.requirements', 'inventories.id')
+            //->join('inventories', 'editing_facs.requirements', 'inventories.id')
             ->join('suits', 'editing_facs.suitID', 'suits.id')
             ->first();
         return view('livewire.cstoreject-edit-view', compact('record'));
