@@ -104,7 +104,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Remarks</label>
-                            <p>
+                            <p class="form-control">
                                 {{ $record->remarks }}
                             </p>
                         </div>
@@ -173,7 +173,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
+                <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}" style="text-decoration: none">Close
 
                 </a>
             </div>

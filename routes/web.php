@@ -30,6 +30,8 @@ use App\Http\Livewire\HonEditApprovedView;
 use App\Http\Livewire\HonFacApprovedView;
 use App\Http\Livewire\HONRejected;
 use App\Http\Livewire\HonRejectEditView;
+use App\Http\Livewire\ProductionFacilitiesReport;
+use App\Http\Livewire\Reportview;
 use App\Http\Livewire\TimeTable;
 use App\Http\Livewire\TpmApproveEditView;
 use App\Http\Livewire\TpmApproveProdView;
@@ -160,4 +162,7 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/timetable', TimeTable::class);
   //timetable routes
   Route::post('assignmona/{id}', [MainController::class, 'assignEditorMonMoA'])->name('assignmoa');
+  Route::get('/preport',ProductionFacilitiesReport::class);
+  Route::get('/booking/search',[ProductionFacilitiesReport::class, 'search']);
+  Route::get('/reportview/{id}', [Reportview::class, 'veiwline']);
 });

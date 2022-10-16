@@ -1,3 +1,4 @@
+<title>{{$title}}</title>
 <div class="container-fluid">
     <div class="div">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -166,10 +167,10 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a class="btn-group" role="group">
+                        <div class="btn-group" role="group">
                             <button type="submit"
                                 class="btn btn-sm btn-danger"wire:click="rejectReason">Reject</button>
-                        </a>
+                        </div>
                     </div>
                 </form>
             </div>

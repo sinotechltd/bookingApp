@@ -5,6 +5,9 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
+                            <a class="btn btn-outline-primary" href="/csto"><- Back</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="/admin">Manage Users</a>
                         </li>
                         <li class="nav-item">

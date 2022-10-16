@@ -14,13 +14,13 @@ class TPMPApproval extends Component
         ->where('approver2_id', '=', session('LoggedUser'))->where('approval_level2', '=', 'Approved')
         ->join('users', 'master_bookings.user_id', 'users.id')
         ->get();
-        $userBookings = EditingFac::select('editing_facs.*','suits.suitName','users.name','programs_tables.program_name','inventories.equipname')
+        $userBookings = EditingFac::select('editing_facs.*','suits.suitName','users.name','programs_tables.program_name')
         ->where('approver2_id', '=', session('LoggedUser'))
         ->where('approval_level2', '=', 'Approved')
         ->join('suits','editing_facs.suitID','suits.id')
         ->join('users','editing_facs.user_id','users.id')
         ->join('programs_tables','editing_facs.program_title','programs_tables.id')
-        ->join('inventories','editing_facs.requirements','inventories.id')
+        //->join('inventories','editing_facs.requirements','inventories.id')
         ->get();
         //Log:: message($userBookings);
         return view('livewire.t-p-m-p-approval',compact('userBookings','userApproval'))->layout('livewire.layouts.base');

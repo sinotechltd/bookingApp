@@ -102,9 +102,9 @@
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Remarks</label>
-                        <textarea name="rehearsal_time" class="form-control">
+                        <p name="rehearsal_time" class="form-control">
                             {{ $record->remarks }}
-                        </textarea>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -161,15 +161,14 @@
                 <div class="col">
                     <div class="mb-3">
                         <label class="form-label">Approval comments</label>
-                        <textarea name="remarks" class="form-control">
+                        <p name="remarks" class="form-control">
                                 {{ $record->comments }}
-                            </textarea>
+                            </p>
                     </div>
                 </div>
             </div>
             <div class="modal-footer">
                 <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
-
                 </a>
             </div>
 

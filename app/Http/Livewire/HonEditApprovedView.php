@@ -10,10 +10,10 @@ class HonEditApprovedView extends Component
 {
     public function viewRecord($id)
     {
-        $record = EditingFac::select('editing_facs.*', 'programs_tables.program_name', 'inventories.equipname','suits.suitName')
+        $record = EditingFac::select('editing_facs.*', 'programs_tables.program_name','suits.suitName')
             ->where('editing_facs.id', '=', $id)
             ->join('programs_tables', 'editing_facs.program_title', 'programs_tables.id')
-            ->join('inventories', 'editing_facs.requirements', 'inventories.id')
+            //->join('inventories', 'editing_facs.requirements', 'inventories.id')
             ->join('suits', 'editing_facs.suitID', 'suits.id')
             ->first();
         $recordname = EditingFac::select('editing_facs.user_id', 'users.name')

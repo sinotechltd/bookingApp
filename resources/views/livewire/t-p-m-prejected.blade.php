@@ -46,8 +46,8 @@
         </ul>
     </div>
     <div class="container">
-        <div class="row">
-
+        <h5>Production Facilities Approved entries</h5>
+        <div class="row">           
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -87,8 +87,10 @@
                         </tr>
                     @endif
                 </tbody>
+            </table>
+            <table>
                 <div class="row">
-                    <h5>Editing Facilities Approved entries</h5>
+                    <h5>Editing Facilities Approved entries</h5>                   
                     <table class="table table-hover">
                         <thead>
                             <tr>

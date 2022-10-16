@@ -30,6 +30,7 @@
         </div>
         <div class="message">
             <p>These page is under development</p>
+            @Collins Kandie
         </div>
     </div>
 </div>

@@ -15,11 +15,11 @@ class TPMPrejected extends Component
             ->join('users', 'editing_facs.user_id', 'users.id')
             ->join('suits', 'editing_facs.suitID', 'suits.id')
             ->get();
-        $userApproval = Master_booking::select('master_bookings.*', 'programs_tables.program_name', 'inventories.equipname', 'users.name')
+        $userApproval = Master_booking::select('master_bookings.*', 'programs_tables.program_name','users.name')
             ->where('master_bookings.approver2_id', '=', session('LoggedUser'))->where('master_bookings.approval_level2', '=', 'Rejected')
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->join('programs_tables', 'master_bookings.program_title', 'programs_tables.id')
-            ->join('inventories', 'master_bookings.items_booked', 'inventories.id')
+           // ->join('inventories', 'master_bookings.items_booked', 'inventories.id')
             ->get();
         return view('livewire.t-p-m-prejected', compact('userBooking', 'userApproval'))->layout('livewire.layouts.base');
     }

@@ -126,8 +126,8 @@
                         <div class="col">
                             <div class="mb-3">
                                 <label class="form-label">Remarks</label>
-                                <textarea class="form-control">
-                            {{ $record->remarks }} </textarea>
+                                <p class="form-control">
+                            {{ $record->remarks }} </p>
                             </div>
                         </div>
                     </div>
@@ -146,14 +146,14 @@
                     </div>
                 </div>
 
-                <div class="modal-footer">
+                <div class="modal-footer" style="text-decoration: none">
                     <div class="btn-group" role="group" >
                         <button type="submit" class="btn btn-sm btn-success">Approve</button>
                     </div>
 
-                    <div class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
+                    <a class="btn-group btn-sm btn-primary" role="group" href="/hon">Close
 
-                    </div>
+                    </a>
                 </div>
             </div>
         </form>

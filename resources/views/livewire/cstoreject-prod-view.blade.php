@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -52,8 +53,7 @@
                     <div class="col">
                         <div class="mb-3">
                             <label for="" class="form-label">Booking Reference</label>
-                            <input name="recordid"  class="form-control"
-                                value="{{ $record->id }}">
+                            <input name="recordid" class="form-control" value="{{ $record->id }}">
                         </div>
                     </div>
                     <div class="col">
@@ -116,42 +116,20 @@
                                 wire:model='producer'>
                                 {{ $record->equipname }}
                             </div>
-
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label">Items booked</label>
-                            <div class="form-control producer" name="producer" aria-label="Default select example"
-                                wire:model='producer'>
-                                {{ $record->equipname }}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="col">
-                        <div class="mb-3">
-                            <label class="form-label">Items booked</label>
-                            <div class="form-control producer" name="producer" aria-label="Default select example"
-                                wire:model='producer'>
-                                {{ $record->equipname }}
-                            </div>
-
-                        </div>
-                    </div>
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Remarks</label>
-                                <textarea class="form-control">
-                            {{ $record->remarks }}
-                        </textarea>
-                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row align-items-start">
-
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Remarks</label>
+                            <p class="form-control">
+                            {{ $record->remarks }}
+                        </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row align-items-start">
                     <div class="col">
                         <div class="mb-3">
                             <label class="form-label">Approval comments</label>
@@ -162,17 +140,14 @@
                                 @enderror
                             </div>
                         </div>
-                    </div>
-                    {{-- <a class="btn-group" role="group" href="{{ url('/approveline', $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-primary">Approve</button>
-                    </a> --}}
-                    <a class="btn-group" role="group" href="{{ url('/ctorejectlineview', $record->id) }}">
-                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
-                    </a>
+                    </div>                 
 
                 </div>
                 <div class="modal-footer">
-                    <a class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
+                    <a class="btn-group" role="group" href="{{ url('/ctorejectlineview', $record->id) }}" style="text-decoration: none">
+                        <button type="submit" class="btn btn-sm btn-danger">Reject</button>
+                    </a>
+                    <a class="btn-group btn-sm btn-primary" role="group" style="text-decoration: none" href="/csto">Close
 
                     </a>
                 </div>

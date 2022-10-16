@@ -1,15 +1,20 @@
 <div class="container-fluid">
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link"href="/csto">Approval</a>
+            <a class="nav-link"href="/csto">Home</a>
         </li>
               <li class="nav-item">
             <a class="nav-link active"  aria-current="page" href="/assign">Assign</a>
         </li>                       
     </ul>
 {{-- <hr> --}}
+<script>
+   function display() {
+      window.print();
+   }
+</script>
     <h5 style="text-align: center">Assign respective personel duties</h5>
-
+    <button class="btn btn-sm btn-primary" onclick="display()">Click to Print</button>
     <div class="container">
         <table class="table bordered">
             <thead>

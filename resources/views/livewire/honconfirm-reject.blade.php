@@ -120,15 +120,14 @@
 
                         </div>
                     </div>
-
-                    <div class="row align-items-start">
-                        <div class="col">
-                            <div class="mb-3">
-                                <label class="form-label">Remarks</label>
-                                <p class="form-control">
-                                    {{ $record->remarks }}
-                                </p>
-                            </div>
+                </div>
+                <div class="row align-items-start">
+                    <div class="col">
+                        <div class="mb-3">
+                            <label class="form-label">Remarks</label>
+                            <p class="form-control">
+                                {{ $record->remarks }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -146,13 +145,11 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer" style="text-decoration: none">
                     <div class="btn-group" role="group">
                         <button type="submit" class="btn btn-sm btn-danger">Reject</button>
                     </div>
-                    <div class="btn-group btn-sm btn-primary" role="group" href="{{ url()->previous() }}">Close
-
-                    </div>
+                    <a class="btn-group btn-sm btn-primary" role="group" href="/hon">Close</a>
                 </div>
             </div>
         </form>

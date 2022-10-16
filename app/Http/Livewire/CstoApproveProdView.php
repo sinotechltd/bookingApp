@@ -11,11 +11,11 @@ class CstoApproveProdView extends Component
     
     public function veiwline(int $id)
     {
-        $record = Master_booking::select('master_bookings.*', 'users.name', 'programs_tables.program_name', 'inventories.equipname')
+        $record = Master_booking::select('master_bookings.*', 'users.name', 'programs_tables.program_name')
             ->where('master_bookings.id', $id)
             ->join('users', 'master_bookings.user_id', 'users.id')
             ->join('programs_tables', 'master_bookings.program_title', 'programs_tables.id')
-            ->join('inventories', 'master_bookings.items_booked', 'inventories.id')           
+            //->join('inventories', 'master_bookings.items_booked', 'inventories.id')           
             ->first();
             return view('livewire.csto-approve-prod-view', compact('record'));
     }
