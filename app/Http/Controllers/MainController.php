@@ -41,13 +41,13 @@ class MainController extends Controller
     }
     function save(Request $request)
     {
+        $defaultPassword="Password";
+        $defaultToken="Token";
         //return $request->input();
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'role' => 'required',
-            'rtoken' => 'required',
-            'password' => 'required|min:5'
+            'role' => 'required',            
 
         ]);
         //insert data into users table
@@ -55,8 +55,8 @@ class MainController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->role = $request->role;
-        $user->remember_token = $request->rtoken;
-        $user->password = Hash::make($request->password);
+        $user->remember_token = $defaultToken;
+        $user->password = Hash::make($defaultPassword);
         $save = $user->save();
 
         if ($save) {

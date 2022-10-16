@@ -31,6 +31,7 @@ use App\Http\Livewire\HonFacApprovedView;
 use App\Http\Livewire\HONRejected;
 use App\Http\Livewire\HonRejectEditView;
 use App\Http\Livewire\ProductionFacilitiesReport;
+use App\Http\Livewire\Profile;
 use App\Http\Livewire\Reportview;
 use App\Http\Livewire\TimeTable;
 use App\Http\Livewire\TpmApproveEditView;
@@ -165,4 +166,8 @@ Route::group(['middleware' => ['AutCheck']], function () {
   Route::get('/preport',ProductionFacilitiesReport::class);
   Route::get('/booking/search',[ProductionFacilitiesReport::class, 'search']);
   Route::get('/reportview/{id}', [Reportview::class, 'veiwline']);
+
+  //user profile
+  Route::get('/user/profile/{id}',Profile::class);
+  Route::post('updateProfile}',[Profile::class,'update'])->name('updateProfile');
 });

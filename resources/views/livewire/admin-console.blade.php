@@ -130,25 +130,7 @@
                                 {{ $message }}
                             @enderror
                         </span>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Remember Token</label>
-                        <input type="txt" name="rtoken" class="form-control mt-1"
-                            placeholder="Password reset hint" />
-                        <span class="text-danger"> @error('rtoken')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
-                    <div class="form-group mt-3">
-                        <label>Password</label>
-                        <input type="password" name="password" class="form-control mt-1"
-                            placeholder="Enter password" />
-                        <span class="text-danger"> @error('password')
-                                {{ $message }}
-                            @enderror
-                        </span>
-                    </div>
+                    </div>                    
                     <div class="d-grid gap-2 mt-3">
                         <button type="submit" class="btn btn-primary">
                             Sing Up
