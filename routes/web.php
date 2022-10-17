@@ -169,5 +169,5 @@ Route::group(['middleware' => ['AutCheck']], function () {
 
   //user profile
   Route::get('/user/profile/{id}',Profile::class);
-  Route::post('updateProfile}',[Profile::class,'update'])->name('updateProfile');
+  Route::post('/updateProfile',[Profile::class,'update'])->name('updateProfile');
 });
